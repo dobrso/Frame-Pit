@@ -11,7 +11,7 @@
     </head>
     <body>
         <header>
-            <a href="{% url 'main:home' %}">Placeholder Name</a>
+            <a href="{% url 'main:home' %}">Frame Pit</a>
             {% if user.is_authenticated %}
                 <button onclick="window.location='{% url 'users:profile' user.id %}';">
                     Профиль

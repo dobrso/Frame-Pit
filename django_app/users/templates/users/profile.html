@@ -1,9 +1,16 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}
-    Профиль {{ user.username }}
+    Профиль {{ profile.user.username }}
 {% endblock %}
 
 {% block content %}
-    {{ user.username }}
+    <img src="{% static profile.image_path %}" alt="avatar">
+    {{ profile.user.username }}
+
+    {% if request.user == profile.user %}
+        <a href="{% url 'users:profile_edit' profile.user.id %}">Редактировать профиль</a>
+        <a href="{% url 'users:profile_delete' profile.user.id %}">Удалить профиль</a>
+    {% endif %}
 {% endblock %}

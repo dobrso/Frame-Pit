@@ -1,10 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base.html' %}
 
-</body>
-</html>
+{% block title %}
+    Комната {{ room.name }}
+{% endblock %}
+
+{% block content %}
+    <a href="{% url 'rooms:rooms_list' %}">Выйти</a>
+    {{ room.name }}
+
+    {% if request.user == room.owner %}
+        <a href="{% url 'rooms:room_update' room.id %}">Изменить</a>
+        <a href="{% url 'rooms:room_delete' room.id %}">Удалить</a>
+    {% endif %}
+{% endblock %}

@@ -5,4 +5,8 @@
 {% endblock %}
 
 {% block content %}
+    <a href="{% url 'rooms:room_create' %}">Создать комнату</a>
+    {% for room in rooms %}
+        <a href="{% url 'rooms:room_detail' room.id %}">{{ room.name }}</a>
+    {% endfor %}
 {% endblock %}

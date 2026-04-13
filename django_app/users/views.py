@@ -13,7 +13,7 @@ class RegisterView(CreateView):
     template_name = 'users/register.html'
     success_url = reverse_lazy('users:login')
 
-class ProfileView(DetailView, LoginRequiredMixin):
+class ProfileDetailView(LoginRequiredMixin, DetailView):
     model = Profile
     template_name = 'users/profile_detail.html'
     context_object_name = 'profile'
@@ -21,7 +21,7 @@ class ProfileView(DetailView, LoginRequiredMixin):
     def get_object(self):
         return get_object_or_404(Profile, user=self.kwargs['user_id'])
 
-class ProfileEditView(UpdateView, LoginRequiredMixin):
+class ProfileUpdateView(LoginRequiredMixin, UpdateView):
     model = Profile
     form_class = ProfileForm
     template_name = 'users/profile_update.html'
@@ -33,7 +33,7 @@ class ProfileEditView(UpdateView, LoginRequiredMixin):
     def get_success_url(self):
         return reverse_lazy('users:profile_detail', kwargs={'user_id': self.object.user.id})
 
-class ProfileDeleteView(DeleteView, LoginRequiredMixin):
+class ProfileDeleteView(LoginRequiredMixin, DeleteView):
     model = User
     template_name = 'users/profile_delete.html'
     context_object_name = 'user'

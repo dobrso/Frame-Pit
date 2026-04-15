@@ -5,10 +5,46 @@
 {% endblock %}
 
 {% block content %}
-    <form method="post">
-        {% csrf_token %}
-        <button type="submit">
-            Удалить
-        </button>
-    </form>
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+            <div class="card shadow-sm">
+                <div class="card-header bg-white text-center">
+                        <h4 class="mb-0">Удалить комнату</h4>
+                </div>
+
+                <div class="card-body">
+                    <div class="text-center mb-4">
+                        <div class="mb-3">
+                            <i class="bi bi-exclamation-triangle" style="font-size: 48px; color: #dc3545;"></i>
+                        </div>
+                        <h5 class="text-danger">Вы уверены, что хотите удалить эту комнату?</h5>
+                        <p class="text-muted mt-2">Это действие нельзя отменить.</p>
+                    </div>
+
+                    <div class="alert alert-warning">
+                        <strong>{{ room.name }}</strong>
+                        {% if room.image %}
+                            <div class="mt-2">
+                                <img src="{{ room.image.url }}" alt="{{ room.name }}" class="img-thumbnail" style="max-height: 100px;">
+                            </div>
+                        {% endif %}
+                    </div>
+
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                            <a href="{% url 'rooms:room_detail' room.id %}" class="btn btn-secondary me-md-2">
+                                Отмена
+                            </a>
+                            <button type="submit" class="btn btn-danger">
+                                <i class="bi bi-trash"></i> Удалить
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}

@@ -5,14 +5,64 @@
 {% endblock %}
 
 {% block content %}
-    <a href="{% url 'rooms:room_leave' room.id %}">Выйти</a>
-    {{ room.name }}
-    <img src="{{ room.image.url }}" alt="image">
+<div class="container-fluid mt-3">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="card shadow-sm mb-3">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-start mb-3">
+                        <h4 class="card-title mb-0">{{ room.name }}</h4>
+                        <a href="{% url 'rooms:room_leave' room.id %}" class="btn btn-outline-danger btn-sm">
+                            Выйти
+                        </a>
+                    </div>
 
-    {{ room.members }}
+                    {% if room.image %}
+                        <img src="{{ room.image.url }}" alt="{{ room.name }}" class="img-fluid rounded mb-3">
+                    {% endif %}
 
-    {% if request.user == room.owner %}
-        <a href="{% url 'rooms:room_update' room.id %}">Изменить</a>
-        <a href="{% url 'rooms:room_delete' room.id %}">Удалить</a>
-    {% endif %}
+                    {% if room.tags.exists %}
+                        <div class="mb-2">
+                            <strong>Тэги:</strong>
+                            {% for tag in room.tags.all %}
+                                <span class="badge bg-secondary">{{ tag.name }}</span>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+
+                    {% if request.user == room.owner %}
+                        <div class="mt-3">
+                            <a href="{% url 'rooms:room_update' room.id %}" class="btn btn-sm btn-primary">Изменить</a>
+                            <a href="{% url 'rooms:room_delete' room.id %}" class="btn btn-sm btn-danger">Удалить</a>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="card shadow-sm">
+                <div class="card-header bg-white">
+                    <h5 class="mb-0">Чат</h5>
+                </div>
+                <div class="card-body text-center py-5">
+                    <i class="bi bi-chat-dots" style="font-size: 48px; color: #6c757d;"></i>
+                    <p class="text-muted mt-3 mb-0">В разработке</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-9">
+            <div class="card shadow-sm">
+                <div class="card-header bg-white">
+                    <h5 class="mb-0">Видео</h5>
+                </div>
+                <div class="card-body text-center py-5">
+                    <div class="py-5">
+                        <i class="bi bi-camera-video" style="font-size: 64px; color: #6c757d;"></i>
+                        <p class="text-muted mt-3 mb-0">В разработке</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}

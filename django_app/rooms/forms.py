@@ -8,6 +8,10 @@ class RoomForm(forms.ModelForm):
     class Meta:
         model = Room
         fields = ['name', 'image', 'tags']
+        widgets = {
+            'name': forms.TextInput(attrs={'class': 'form-control'}),
+            'image': forms.FileInput(attrs={'class': 'form-control'}),
+        }
 
     def clean_name(self):
         name = self.cleaned_data['name']

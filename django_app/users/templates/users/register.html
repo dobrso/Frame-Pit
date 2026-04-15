@@ -5,12 +5,77 @@
 {% endblock %}
 
 {% block content %}
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">
-            Зарегистрироваться
-        </button>
-    </form>
-    Уже есть аккаунт? <a href="{% url 'users:login' %}">Войти</a>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-5">
+            <div class="card shadow-sm">
+                <div class="card-header bg-primary text-white text-center">
+                    <h3 class="mb-0">Регистрация</h3>
+                </div>
+                <div class="card-body">
+                    <form method="post">
+                        {% csrf_token %}
+
+                        <!-- Имя пользователя -->
+                        <div class="mb-3">
+                            <label for="{{ form.username.id_for_label }}" class="form-label">
+                                Имя пользователя
+                            </label>
+                            {{ form.username }}
+                            {% if form.username.help_text %}
+                                <small class="text-muted d-block mt-1">{{ form.username.help_text }}</small>
+                            {% endif %}
+                            {% for error in form.username.errors %}
+                                <div class="alert alert-danger mt-1 py-1">{{ error }}</div>
+                            {% endfor %}
+                        </div>
+
+                        <!-- Email -->
+                        <div class="mb-3">
+                            <label for="{{ form.email.id_for_label }}" class="form-label">
+                                Email
+                            </label>
+                            {{ form.email }}
+                            {% for error in form.email.errors %}
+                                <div class="alert alert-danger mt-1 py-1">{{ error }}</div>
+                            {% endfor %}
+                        </div>
+
+                        <!-- Пароль -->
+                        <div class="mb-3">
+                            <label for="{{ form.password1.id_for_label }}" class="form-label">
+                                Пароль
+                            </label>
+                            {{ form.password1 }}
+                            {% if form.password1.help_text %}
+                                <small class="text-muted d-block mt-1">{{ form.password1.help_text }}</small>
+                            {% endif %}
+                            {% for error in form.password1.errors %}
+                                <div class="alert alert-danger mt-1 py-1">{{ error }}</div>
+                            {% endfor %}
+                        </div>
+
+                        <!-- Подтверждение пароля -->
+                        <div class="mb-3">
+                            <label for="{{ form.password2.id_for_label }}" class="form-label">
+                                Подтверждение пароля
+                            </label>
+                            {{ form.password2 }}
+                            {% for error in form.password2.errors %}
+                                <div class="alert alert-danger mt-1 py-1">{{ error }}</div>
+                            {% endfor %}
+                        </div>
+
+                        <button type="submit" class="btn btn-primary w-100">
+                            Зарегистрироваться
+                        </button>
+                    </form>
+                </div>
+                <div class="card-footer text-center bg-white">
+                    Уже есть аккаунт? <a href="{% url 'users:login' %}" class="text-decoration-none">Войти</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}

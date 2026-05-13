@@ -10,6 +10,10 @@ from .serializers import ProfileSerializer
     tags=['Пользователи'],
 )
 class ProfileAPIView(generics.RetrieveAPIView):
+    '''
+    Эндпоинт для получения профиля текущего пользователя. Требуется авторизация
+    '''
+
     serializer_class = ProfileSerializer
     permission_classes = [permissions.IsAuthenticated]
 

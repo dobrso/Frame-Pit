@@ -10,6 +10,10 @@ from .serializers import SimpleRoomSerializer, RoomSerializer
     tags=['Комната'],
 )
 class RoomListAPIView(generics.ListAPIView):
+    '''
+    Эндпоинт для получения списка всех комнат
+    '''
+
     queryset = Room.objects.all()
     serializer_class = SimpleRoomSerializer
 
@@ -19,6 +23,10 @@ class RoomListAPIView(generics.ListAPIView):
     tags=['Комната'],
 )
 class RoomDetailAPIView(generics.RetrieveAPIView):
+    '''
+    Эндпоинт для получения информации о комнате
+    '''
+
     queryset = Room.objects.all()
     serializer_class = RoomSerializer
 

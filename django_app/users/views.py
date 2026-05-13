@@ -8,12 +8,20 @@ from .forms import RegisterForm, ProfileForm
 from .models import Profile
 
 class RegisterView(CreateView):
+    '''
+    Отображается страницу с формой для регистрации
+    '''
+
     model = User
     form_class = RegisterForm
     template_name = 'users/register.html'
     success_url = reverse_lazy('users:login')
 
 class ProfileDetailView(LoginRequiredMixin, DetailView):
+    '''
+    Отображает страницу с профилем пользователя. Требуется авторизация
+    '''
+
     model = Profile
     template_name = 'users/profile_detail.html'
     context_object_name = 'profile'
@@ -22,6 +30,10 @@ class ProfileDetailView(LoginRequiredMixin, DetailView):
         return get_object_or_404(Profile, user=self.kwargs['user_id'])
 
 class ProfileUpdateView(LoginRequiredMixin, UpdateView):
+    '''
+    Отображает страницу с формой для обновления данных профиля. Требуется авторизация
+    '''
+
     model = Profile
     form_class = ProfileForm
     template_name = 'users/profile_update.html'
@@ -34,6 +46,11 @@ class ProfileUpdateView(LoginRequiredMixin, UpdateView):
         return reverse_lazy('users:profile_detail', kwargs={'user_id': self.object.user.id})
 
 class ProfileDeleteView(LoginRequiredMixin, DeleteView):
+    '''
+    Отображает страницу с формой для удаления пользователя. Вместо того чтобы удалять профиль, удаляется
+    пользователь, а с ним и профиль (Cascade). Требуется авторизация
+    '''
+
     model = User
     template_name = 'users/profile_delete.html'
     context_object_name = 'user'

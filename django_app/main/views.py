@@ -2,6 +2,10 @@ from django.http import JsonResponse
 from django.core.cache import cache
 
 def check_redis(request):
+    '''
+    Функция для проверки работы Redis
+    '''
+
     try:
         cache.set('test', 'working', 5)
         value = cache.get('test')

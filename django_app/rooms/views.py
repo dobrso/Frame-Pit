@@ -7,20 +7,36 @@ from .forms import RoomForm
 from .models import Room
 
 class RoomsListView(ListView):
+    '''
+    Отображает страницу со списком всех комнат
+    '''
+
     model = Room
     template_name = 'rooms/rooms_list.html'
     context_object_name = 'rooms'
 
 class RoomCreateView(LoginRequiredMixin, CreateView):
+    '''
+    Отображает страницу с формой создания комнаты. Требуется авторизация
+    '''
+
     model = Room
     form_class = RoomForm
     template_name = 'rooms/room_create.html'
 
     def get_initial(self):
+        '''
+        Получает черновик с данными о комнате, если они есть в сессии пользователя
+        '''
+
         draft = self.request.session.get(f'room_draft_{self.request.user.id}')
         return draft or {}
 
     def form_invalid(self, form):
+        '''
+        Сохраняет данные о комнате в черновик, если форма невалидна
+        '''
+
         draft_key = f'room_draft_{self.request.user.id}'
         draft_data = {
             'name': self.request.POST.get('name', ''),
@@ -33,6 +49,10 @@ class RoomCreateView(LoginRequiredMixin, CreateView):
         return super().form_invalid(form)
 
     def form_valid(self, form):
+        '''
+        Удаляет черновик с данными о комнате, если форма валидна
+        '''
+
         form.instance.owner = self.request.user
 
         draft_key = f'room_draft_{self.request.user.id}'
@@ -45,6 +65,10 @@ class RoomCreateView(LoginRequiredMixin, CreateView):
         return reverse_lazy('rooms:room_join', kwargs={'room_id': self.object.id})
 
 class RoomDetailView(LoginRequiredMixin, DetailView):
+    '''
+    Отображает страницу с комнатой. Требуется авторизация
+    '''
+
     model = Room
     template_name = 'rooms/room_detail.html'
     context_object_name = 'room'
@@ -53,6 +77,10 @@ class RoomDetailView(LoginRequiredMixin, DetailView):
         return get_object_or_404(Room, id=self.kwargs['room_id'])
 
 class RoomUpdateView(LoginRequiredMixin, UpdateView):
+    '''
+    Отображает страницу с формой для обновления данных комнаты. Требуется авторизация
+    '''
+
     model = Room
     form_class = RoomForm
     template_name = 'rooms/room_update.html'
@@ -65,6 +93,10 @@ class RoomUpdateView(LoginRequiredMixin, UpdateView):
         return reverse_lazy('rooms:room_detail', kwargs={'room_id': self.kwargs['room_id']})
 
 class RoomDeleteView(LoginRequiredMixin, DeleteView):
+    '''
+    Отображает страницу с формой удаления комнаты. Требуется авторизация
+    '''
+
     model = Room
     template_name = 'rooms/room_delete.html'
     context_object_name = 'room'
@@ -76,6 +108,10 @@ class RoomDeleteView(LoginRequiredMixin, DeleteView):
             return room
 
 class RoomJoinView(LoginRequiredMixin, RedirectView):
+    '''
+    Перенаправляет пользователя на страницу с комнатой, тем самым добавляет его в список участников. Требуется авторизация
+    '''
+
     def get_redirect_url(self, *args, **kwargs):
         room = get_object_or_404(Room, id=self.kwargs['room_id'])
         room.members.add(self.request.user)
@@ -83,6 +119,10 @@ class RoomJoinView(LoginRequiredMixin, RedirectView):
         return reverse_lazy('rooms:room_detail', kwargs={'room_id': self.kwargs['room_id']})
 
 class RoomLeaveView(LoginRequiredMixin, RedirectView):
+    '''
+    Перенаправляет пользователя со страницы комнаты, тем самым удаляет его из списка участников. Требуется авторизация
+    '''
+
     def get_redirect_url(self, *args, **kwargs):
         room = get_object_or_404(Room, id=self.kwargs['room_id'])
         room.members.remove(self.request.user)

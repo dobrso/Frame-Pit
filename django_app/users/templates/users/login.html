@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load socialaccount %}
 
 {% block title %}
     Вход
@@ -61,6 +62,12 @@
                             Забыли пароль?
                         </a>
                     </div>
+                </div>
+                <div>
+                    <a href="{% provider_login_url 'github' %}">Войти через GitHub</a>
+                </div>
+                <div>
+                    <a href="{% provider_login_url 'yandex' %}">Войти через Яндекс</a>
                 </div>
             </div>
         </div>

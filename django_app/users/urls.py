@@ -1,6 +1,7 @@
 from django.urls import path, reverse_lazy
 from django.contrib.auth.views import LoginView, LogoutView, PasswordResetView, PasswordResetDoneView, PasswordResetConfirmView, PasswordResetCompleteView
 
+from .api_views import ProfileAPIView
 from .forms import LoginForm, CustomPasswordResetForm, CustomSetPasswordForm
 from .views import RegisterView, ProfileDetailView, ProfileUpdateView, ProfileDeleteView
 
@@ -42,4 +43,5 @@ urlpatterns = [
         PasswordResetCompleteView.as_view(template_name='users/password_reset_complete.html'),
         name='password_reset_complete',
     ),
+    path('api/me/', ProfileAPIView.as_view(), name='api_me'),
 ]

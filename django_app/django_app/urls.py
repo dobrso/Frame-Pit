@@ -11,4 +11,7 @@ urlpatterns = [
     path('rooms/', include('rooms.urls')),
     path('api/schema', SpectacularAPIView.as_view(), name='schema'),
     path('api/swagger-ui/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
+    path('api/auth/', include('dj_rest_auth.urls')),
+    path('api/auth/registration/', include('dj_rest_auth.registration.urls')),
+    path('accounts/', include('allauth.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

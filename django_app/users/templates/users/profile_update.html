@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block title %}
-    Редактирование профиля — Frame Pit
+    Редактирование профиля
 {% endblock %}
 
 {% block content %}
@@ -15,7 +15,6 @@
             <form method="post" enctype="multipart/form-data">
                 {% csrf_token %}
 
-                <!-- Фото профиля -->
                 <div class="avatar-edit-section">
                     <div class="avatar-preview">
                         {% if profile.image %}
@@ -48,8 +47,6 @@
                         {% endif %}
                     </div>
                 </div>
-
-                <!-- Описание -->
                 <div class="input-group-login">
                     <label for="{{ form.description.id_for_label }}" class="login-label">
                         ДОСЬЕ / ОПИСАНИЕ

@@ -1,7 +1,3 @@
-/* ============================================
-   RESET & GLOBAL – Buckshot Roulette inspired
-   Dark, gritty, industrial, high contrast
-============================================ */
 * {
     margin: 0;
     padding: 0;
@@ -18,7 +14,6 @@ body {
     background-attachment: fixed;
 }
 
-/* custom scrollbar – rusty/industrial */
 ::-webkit-scrollbar {
     width: 8px;
     height: 8px;
@@ -36,7 +31,6 @@ body {
     background: #a67452;
 }
 
-/* TYPOGRAPHY – rough, typewriter feel */
 h1, h2, h3, h4, .h4-like {
     font-weight: 500;
     letter-spacing: -0.02em;
@@ -62,7 +56,6 @@ button, .btn-like {
     font-family: inherit;
 }
 
-/* Header – industrial bunker style */
 .site-header {
     background: #050505dd;
     backdrop-filter: blur(8px);
@@ -103,7 +96,6 @@ button, .btn-like {
     flex-wrap: wrap;
 }
 
-/* Industrial buttons – no bootstrap */
 .btn-outline-roulette {
     background: transparent;
     border: 1.5px solid #7a5a4a;
@@ -143,142 +135,12 @@ button, .btn-like {
     box-shadow: 0 0 5px #b87a48;
 }
 
-/* Main container */
 .main-container {
     max-width: 1300px;
     margin: 0 auto;
     padding: 0 1.5rem 3rem 1.5rem;
 }
 
-/* Room cards & video-like grit */
-.room-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 2rem;
-    margin-top: 2rem;
-}
-
-.room-card {
-    background: #11130f;
-    border-left: 6px solid #a3643a;
-    border-bottom: 2px solid #2f261f;
-    padding: 1.2rem;
-    transition: transform 0.1s ease, box-shadow 0.2s;
-    box-shadow: 8px 8px 0 rgba(0,0,0,0.4);
-}
-.room-card:hover {
-    transform: translate(-2px, -2px);
-    box-shadow: 12px 12px 0 rgba(0,0,0,0.5);
-    border-left-color: #ce8d58;
-}
-
-.room-title {
-    font-size: 1.6rem;
-    font-weight: bold;
-    color: #e7caa4;
-    margin-bottom: 0.5rem;
-    word-break: break-word;
-}
-
-.room-meta {
-    font-size: 0.75rem;
-    color: #997f64;
-    border-top: 1px dashed #3a2c22;
-    margin-top: 0.8rem;
-    padding-top: 0.6rem;
-    display: flex;
-    justify-content: space-between;
-}
-
-/* Формы, поля ввода (без bootstrap) */
-.roulette-input {
-    background: #0f0e0c;
-    border: 1px solid #5c3f2e;
-    padding: 0.7rem 1rem;
-    color: #eedbba;
-    font-family: monospace;
-    font-size: 1rem;
-    width: 100%;
-    outline: none;
-    transition: 0.15s;
-}
-.roulette-input:focus {
-    border-color: #bc8260;
-    box-shadow: 0 0 5px #9b623f;
-}
-
-label {
-    display: block;
-    margin-bottom: 0.4rem;
-    font-size: 0.8rem;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    color: #bfa07e;
-}
-
-/* Chat-like area (preview) */
-.chat-preview {
-    background: #090b09;
-    border: 1px solid #30261e;
-    padding: 1rem;
-    margin-top: 1rem;
-    height: 300px;
-    overflow-y: auto;
-    font-family: monospace;
-    font-size: 0.9rem;
-}
-.message-line {
-    border-bottom: 1px dotted #2a221c;
-    padding: 0.4rem 0;
-    color: #cfbc9f;
-}
-.message-user {
-    color: #e7bc7e;
-    font-weight: bold;
-}
-
-.video-placeholder {
-    background: #010101;
-    border: 3px solid #32261f;
-    aspect-ratio: 16 / 9;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.9rem;
-    text-transform: uppercase;
-    color: #6f5540;
-    background-image: repeating-linear-gradient(45deg, #17130f 0px, #17130f 2px, #0b0907 2px, #0b0907 8px);
-}
-
-/* Кнопка опасности (выйти) */
-.btn-danger-roulette {
-    background: #341e16;
-    border: 1px solid #924e2c;
-    color: #f0bc8c;
-    padding: 0.35rem 0.9rem;
-    font-family: monospace;
-    transition: 0.1s;
-}
-.btn-danger-roulette:hover {
-    background: #572e1c;
-    border-color: #e69055;
-    color: #fff0da;
-}
-
-/* profile detail block */
-.profile-card {
-    background: #0c0d0a;
-    border: 1px solid #3b2d22;
-    padding: 2rem;
-    box-shadow: 10px 10px 0 #00000055;
-}
-
-/* ============================================
-   LANDING PAGE - BUCKSHOT ROULETTE STYLE
-   Мерцающая кнопка, атмосфера подпольной рулетки
-============================================ */
-
-/* Контейнер лендинга - центр экрана с драматичным фоном */
 .landing-container {
     min-height: 80vh;
     display: flex;
@@ -287,13 +149,11 @@ label {
     position: relative;
 }
 
-/* Мерцающий фон с эффектом "дымки" и пульсации */
 .landing-glow {
     position: relative;
     text-align: center;
 }
 
-/* Основная мерцающая кнопка - стиль револьвера/рулетки */
 .btn-roulette-main {
     display: inline-block;
     background: linear-gradient(135deg, #2a1a12 0%, #1c110a 100%);
@@ -315,7 +175,6 @@ label {
     animation: shotgunPulse 1.8s ease-in-out infinite;
 }
 
-/* Эффект мерцания как у лампы в Buckshot Roulette */
 @keyframes shotgunPulse {
     0% {
         box-shadow: 0 0 5px rgba(203, 123, 66, 0.3),
@@ -355,7 +214,6 @@ label {
     }
 }
 
-/* Эффект "перезарядки" при наведении */
 .btn-roulette-main:hover {
     animation: shotgunBlast 0.3s ease-out;
     transform: scale(1.02);
@@ -380,7 +238,6 @@ label {
     }
 }
 
-/* Дополнительный эффект "лампы накаливания" - случайное моргание */
 .btn-roulette-main::before {
     content: '';
     position: absolute;
@@ -397,22 +254,6 @@ label {
     left: 100%;
 }
 
-@keyframes spinRust {
-    0% {
-        transform: rotate(0deg) scale(1);
-        opacity: 0.4;
-    }
-    50% {
-        transform: rotate(180deg) scale(1.2);
-        opacity: 0.8;
-    }
-    100% {
-        transform: rotate(360deg) scale(1);
-        opacity: 0.4;
-    }
-}
-
-/* Опционально - мерцающий текст над кнопкой */
 .roulette-tagline {
     font-family: 'Courier New', monospace;
     font-size: 0.9rem;
@@ -434,12 +275,6 @@ label {
     }
 }
 
-/* ============================================
-   СТРАНИЦА ВХОДА - BUCKSHOT ROULETTE STYLE
-   Переиспользование существующих стилей
-============================================ */
-
-/* Контейнер страницы входа */
 .login-wrapper {
     display: flex;
     justify-content: center;
@@ -448,7 +283,6 @@ label {
     padding: 2rem 1rem;
 }
 
-/* Карточка входа - стиль подпольной рулетки */
 .login-card {
     max-width: 450px;
     width: 100%;
@@ -459,7 +293,6 @@ label {
     overflow: hidden;
 }
 
-/* Декоративная полоска сверху как у комнат */
 .login-card::before {
     content: '';
     position: absolute;
@@ -481,7 +314,6 @@ label {
     }
 }
 
-/* Заголовок карточки */
 .login-header {
     background: #050705;
     border-bottom: 2px solid #5c3e2e;
@@ -500,21 +332,10 @@ label {
     text-shadow: 0 0 3px #cb7b42;
 }
 
-.login-header::after {
-    position: absolute;
-    right: 1rem;
-    top: 50%;
-    transform: translateY(-50%);
-    opacity: 0.5;
-    font-size: 1.2rem;
-}
-
-/* Тело карточки */
 .login-body {
     padding: 2rem;
 }
 
-/* Метки полей ввода */
 .login-label {
     display: block;
     margin-bottom: 0.5rem;
@@ -525,7 +346,6 @@ label {
     font-family: monospace;
 }
 
-/* Поля ввода (переиспользуем roulette-input) */
 .roulette-input {
     background: #0f0e0c;
     border: 1px solid #5c3f2e;
@@ -543,12 +363,10 @@ label {
     box-shadow: 0 0 5px #9b623f;
 }
 
-/* Группа полей */
 .input-group-login {
     margin-bottom: 1.5rem;
 }
 
-/* Сообщения об ошибках */
 .error-message {
     background: #2a1510;
     border-left: 4px solid #c4512c;
@@ -563,30 +381,6 @@ label {
     margin-top: 0.5rem;
 }
 
-/* Кнопка входа (переиспользуем btn-solid-roulette) */
-.btn-solid-roulette {
-    background: #5c3a28;
-    border: 1px solid #ab784c;
-    color: #f2e1c0;
-    padding: 0.8rem 1.5rem;
-    font-size: 1rem;
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    font-family: monospace;
-    cursor: pointer;
-    transition: 0.2s;
-    width: 100%;
-}
-
-.btn-solid-roulette:hover {
-    background: #7a5038;
-    border-color: #e0b17a;
-    box-shadow: 0 0 8px #b87a48;
-    letter-spacing: 4px;
-}
-
-/* Футер карточки */
 .login-footer {
     background: #080a07;
     border-top: 1px solid #2a221c;
@@ -612,7 +406,6 @@ label {
     letter-spacing: 0.5px;
 }
 
-/* Разделитель для OAuth */
 .oauth-divider {
     display: flex;
     align-items: center;
@@ -638,7 +431,6 @@ label {
     margin-left: 1rem;
 }
 
-/* Кнопки OAuth (GitHub, Яндекс) */
 .oauth-buttons {
     display: flex;
     flex-direction: column;
@@ -669,7 +461,6 @@ label {
     letter-spacing: 1px;
 }
 
-/* Эффект "дыма" для атмосферы */
 .login-card::after {
     content: '';
     position: absolute;
@@ -681,7 +472,6 @@ label {
     pointer-events: none;
 }
 
-/* Help text стили */
 .help-text {
     display: block;
     font-size: 0.7rem;
@@ -707,12 +497,6 @@ label {
     font-weight: normal;
 }
 
-/* ============================================
-   СТРАНИЦА ВОССТАНОВЛЕНИЯ ПАРОЛЯ
-   Специфические стили для password reset
-============================================ */
-
-/* Информационный блок */
 .reset-info {
     text-align: center;
     margin-bottom: 2rem;
@@ -756,7 +540,6 @@ label {
     font-family: monospace;
 }
 
-/* Кнопка "Вернуться ко входу" в футере */
 .login-footer .btn-outline-roulette {
     background: transparent;
     border: 1.5px solid #7a5a4a;
@@ -781,12 +564,6 @@ label {
     letter-spacing: 3px;
 }
 
-/* ============================================
-   СТРАНИЦА "ПИСЬМО ОТПРАВЛЕНО"
-   Стили для успешной отправки
-============================================ */
-
-/* Успешное сообщение */
 .success-message {
     background: #0a120a;
     border-left: 4px solid #5c8a3a;
@@ -808,7 +585,6 @@ label {
     font-size: 0.8rem;
 }
 
-/* Предупреждение */
 .warning-note {
     background: #1a1510;
     border: 1px solid #8a6a3a;
@@ -839,14 +615,12 @@ label {
     }
 }
 
-/* Разделитель */
 .divider {
     height: 1px;
     background: linear-gradient(90deg, transparent, #5c3e2e, #cb7b42, #5c3e2e, transparent);
     margin: 1.5rem 0;
 }
 
-/* Кнопка возврата */
 .back-to-login {
     text-align: center;
 }
@@ -857,95 +631,6 @@ label {
     font-size: 0.85rem;
 }
 
-/* Анимация для конверта */
-.reset-icon {
-    font-size: 3.5rem;
-    margin-bottom: 0.5rem;
-    animation: envelopeFly 2s ease-in-out infinite;
-    display: inline-block;
-}
-
-@keyframes envelopeFly {
-    0%, 100% {
-        transform: translateY(0px) rotate(0deg);
-        filter: drop-shadow(0 0 2px #cb7b42);
-    }
-    25% {
-        transform: translateY(-5px) rotate(-5deg);
-        filter: drop-shadow(0 0 5px #e68a4a);
-    }
-    75% {
-        transform: translateY(-3px) rotate(5deg);
-        filter: drop-shadow(0 0 5px #e68a4a);
-    }
-}
-
-/* Стили для недействительной ссылки */
-.reset-icon.invalid {
-    animation: skullDeath 1.5s ease-in-out infinite;
-    filter: drop-shadow(0 0 4px #c4512c);
-}
-
-@keyframes skullDeath {
-    0%, 100% {
-        transform: scale(1);
-        opacity: 0.7;
-        filter: drop-shadow(0 0 2px #c4512c);
-    }
-    50% {
-        transform: scale(1.15);
-        opacity: 1;
-        filter: drop-shadow(0 0 12px #e06030);
-    }
-}
-
-/* Стили для группы кнопок */
-.button-group {
-    display: flex;
-    flex-direction: column;
-    gap: 0.8rem;
-}
-
-.button-group .btn-solid-roulette,
-.button-group .btn-outline-roulette {
-    width: 100%;
-    text-align: center;
-    display: block;
-    box-sizing: border-box;
-}
-
-/* Стили для help text пароля */
-.help-text {
-    display: block;
-    font-size: 0.7rem;
-    color: #8a6548;
-    margin-top: 0.4rem;
-    font-family: monospace;
-    letter-spacing: 0.5px;
-    line-height: 1.3;
-}
-
-.help-text ul {
-    margin: 0.3rem 0;
-    padding-left: 1.2rem;
-}
-
-.help-text li {
-    margin: 0.2rem 0;
-    color: #9a7a58;
-}
-
-.help-text strong {
-    color: #cb7b42;
-    font-weight: normal;
-}
-
-/* ============================================
-   СТРАНИЦА "ПАРОЛЬ ИЗМЕНЕН"
-   Стили для успешного завершения
-============================================ */
-
-/* Успешная иконка */
 .reset-icon.success {
     animation: successCheck 0.5s ease-out;
     font-size: 4rem;
@@ -965,7 +650,6 @@ label {
     }
 }
 
-/* Сообщение об успехе */
 .success-message.complete {
     background: #0a120a;
     border-left: 4px solid #6a9e3a;
@@ -981,7 +665,6 @@ label {
     line-height: 1.5;
 }
 
-/* Анимация барабана с патронами */
 .complete-animation {
     margin: 1.5rem 0;
     display: flex;
@@ -1025,31 +708,38 @@ label {
     }
 }
 
-/* Эффект вспышки при успехе */
-.login-card {
-    animation: successFlash 0.8s ease-out;
+.reset-icon.invalid {
+    animation: skullDeath 1.5s ease-in-out infinite;
+    filter: drop-shadow(0 0 4px #c4512c);
 }
 
-@keyframes successFlash {
-    0% {
-        box-shadow: 0 0 0 rgba(106, 158, 58, 0);
-        border-color: #3a2c22;
+@keyframes skullDeath {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 0.7;
+        filter: drop-shadow(0 0 2px #c4512c);
     }
     50% {
-        box-shadow: 0 0 30px rgba(106, 158, 58, 0.6);
-        border-color: #8ab86a;
-    }
-    100% {
-        box-shadow: 12px 12px 0 rgba(0, 0, 0, 0.5);
-        border-color: #3a2c22;
+        transform: scale(1.15);
+        opacity: 1;
+        filter: drop-shadow(0 0 12px #e06030);
     }
 }
 
-/* ============================================
-   СТРАНИЦА ПРОФИЛЯ - BUCKSHOT ROULETTE STYLE
-============================================ */
+.button-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
 
-/* Контейнер профиля */
+.button-group .btn-solid-roulette,
+.button-group .btn-outline-roulette {
+    width: 100%;
+    text-align: center;
+    display: block;
+    box-sizing: border-box;
+}
+
 .profile-wrapper {
     display: flex;
     justify-content: center;
@@ -1058,7 +748,6 @@ label {
     padding: 2rem 1rem;
 }
 
-/* Карточка профиля */
 .profile-card {
     max-width: 550px;
     width: 100%;
@@ -1080,7 +769,6 @@ label {
     animation: holsterGlow 2s ease-in-out infinite;
 }
 
-/* Заголовок профиля */
 .profile-header {
     background: #050705;
     border-bottom: 2px solid #5c3e2e;
@@ -1112,12 +800,10 @@ label {
     border: 1px solid #3a2c22;
 }
 
-/* Тело профиля */
 .profile-body {
     padding: 2rem;
 }
 
-/* Аватар */
 .profile-avatar-section {
     text-align: center;
     margin-bottom: 1.5rem;
@@ -1187,7 +873,6 @@ label {
     opacity: 0.5;
 }
 
-/* Имя пользователя */
 .profile-username {
     font-size: 1.8rem;
     letter-spacing: 2px;
@@ -1198,7 +883,6 @@ label {
     word-break: break-word;
 }
 
-/* Мета информация */
 .profile-meta {
     display: flex;
     justify-content: center;
@@ -1214,7 +898,6 @@ label {
     letter-spacing: 1px;
 }
 
-/* Описание профиля */
 .profile-description {
     margin: 1.5rem 0;
     background: #0a0806;
@@ -1238,39 +921,6 @@ label {
     font-family: monospace;
 }
 
-/* Статистика */
-.profile-stats {
-    display: flex;
-    justify-content: space-around;
-    margin: 1.5rem 0;
-    padding: 1rem 0;
-    border-top: 1px solid #2a221c;
-    border-bottom: 1px solid #2a221c;
-}
-
-.stat-block {
-    text-align: center;
-}
-
-.stat-label {
-    display: block;
-    font-size: 0.65rem;
-    letter-spacing: 2px;
-    color: #8a6548;
-    font-family: monospace;
-    margin-bottom: 0.3rem;
-}
-
-.stat-value {
-    display: block;
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #cb7b42;
-    font-family: 'Courier New', monospace;
-    text-shadow: 0 0 3px rgba(203, 123, 66, 0.5);
-}
-
-/* Действия с профилем */
 .profile-actions {
     display: flex;
     gap: 1rem;
@@ -1295,52 +945,10 @@ label {
     box-shadow: 0 0 8px #c4512c;
 }
 
-/* Адаптация для мобильных */
-@media (max-width: 680px) {
-    .profile-card {
-        max-width: 95%;
-    }
-
-    .profile-body {
-        padding: 1.5rem;
-    }
-
-    .profile-username {
-        font-size: 1.4rem;
-    }
-
-    .profile-actions {
-        flex-direction: column;
-    }
-
-    .profile-badge {
-        position: static;
-        transform: none;
-        display: inline-block;
-        margin-top: 0.5rem;
-    }
-
-    .profile-header {
-        text-align: center;
-    }
-
-    .profile-meta {
-        flex-direction: column;
-        align-items: center;
-        gap: 0.3rem;
-    }
-}
-
-/* ============================================
-   СТРАНИЦА РЕДАКТИРОВАНИЯ ПРОФИЛЯ
-============================================ */
-
-/* Карточка редактирования */
 .edit-card {
     max-width: 550px;
 }
 
-/* Секция редактирования аватара */
 .avatar-edit-section {
     margin-bottom: 2rem;
     text-align: center;
@@ -1400,7 +1008,6 @@ label {
     margin-top: 0.5rem;
 }
 
-/* Textarea в стиле рулетки */
 .roulette-textarea {
     background: #0f0e0c;
     border: 1px solid #5c3f2e;
@@ -1426,7 +1033,6 @@ label {
     font-size: 0.8rem;
 }
 
-/* File input стили */
 .roulette-file-input {
     background: #0f0e0c;
     border: 1px solid #5c3f2e;
@@ -1453,7 +1059,6 @@ label {
     border-color: #e0b17a;
 }
 
-/* Кнопки действий */
 .edit-actions {
     margin-top: 2rem;
     gap: 1rem;
@@ -1494,27 +1099,6 @@ label {
     letter-spacing: 4px;
 }
 
-/* Адаптация для мобильных */
-@media (max-width: 680px) {
-    .edit-actions {
-        flex-direction: column;
-    }
-
-    .edit-avatar, .edit-placeholder {
-        width: 120px;
-        height: 120px;
-    }
-
-    .profile-body {
-        padding: 1.5rem;
-    }
-}
-
-/* ============================================
-   СТРАНИЦА УДАЛЕНИЯ ПРОФИЛЯ - BUCKSHOT STYLE
-============================================ */
-
-/* Карточка удаления */
 .delete-card {
     max-width: 550px;
     border-color: #8a3a2a;
@@ -1542,24 +1126,6 @@ label {
     text-shadow: 0 0 5px #c4512c;
 }
 
-.profile-badge.danger {
-    background: #2a0a05;
-    border-color: #c4512c;
-    color: #e6a07a;
-    animation: badgeBlink 1s ease-in-out infinite;
-}
-
-@keyframes badgeBlink {
-    0%, 100% {
-        opacity: 0.7;
-    }
-    50% {
-        opacity: 1;
-        text-shadow: 0 0 3px #c4512c;
-    }
-}
-
-/* Тело удаления */
 .delete-body {
     background: #0a0605;
 }
@@ -1568,7 +1134,6 @@ label {
     text-align: center;
 }
 
-/* Анимированный череп */
 .warning-skull {
     font-size: 5rem;
     animation: skullShake 0.5s ease-in-out infinite;
@@ -1597,7 +1162,6 @@ label {
     text-shadow: 0 0 5px #c4512c;
 }
 
-/* Сообщение предупреждения */
 .warning-message {
     background: #0a0503;
     border-left: 4px solid #c4512c;
@@ -1632,7 +1196,6 @@ label {
     font-family: monospace;
 }
 
-/* Пульсирующее предупреждение */
 .warning-pulse {
     margin: 1.5rem 0;
     padding: 0.8rem;
@@ -1662,7 +1225,6 @@ label {
     }
 }
 
-/* Кнопки действий */
 .delete-actions {
     display: flex;
     gap: 1rem;
@@ -1706,45 +1268,12 @@ label {
     letter-spacing: 3px;
 }
 
-/* Адаптация для мобильных */
-@media (max-width: 680px) {
-    .delete-card {
-        max-width: 95%;
-    }
-
-    .delete-actions {
-        flex-direction: column;
-    }
-
-    .warning-skull {
-        font-size: 4rem;
-    }
-
-    .delete-warning h4 {
-        font-size: 1.3rem;
-    }
-
-    .warning-message p {
-        font-size: 0.8rem;
-    }
-
-    .warning-list span {
-        font-size: 0.7rem;
-    }
-}
-
-/* ============================================
-   СПИСОК КОМНАТ - BUCKSHOT ROULETTE STYLE
-============================================ */
-
-/* Основной контейнер */
 .rooms-wrapper {
     max-width: 1300px;
     margin: 0 auto;
     padding: 1rem 1.5rem 3rem 1.5rem;
 }
 
-/* Заголовок списка комнат */
 .rooms-header {
     display: flex;
     justify-content: space-between;
@@ -1780,14 +1309,12 @@ label {
     text-decoration: none;
 }
 
-/* Сетка комнат */
 .rooms-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
     gap: 2rem;
 }
 
-/* Ссылка-обертка для комнаты */
 .room-card-link {
     text-decoration: none;
     transition: transform 0.2s ease;
@@ -1798,7 +1325,6 @@ label {
     transform: translateY(-5px);
 }
 
-/* Карточка комнаты */
 .room-card {
     background: #0c0e0a;
     border: 1px solid #3a2c22;
@@ -1812,7 +1338,6 @@ label {
     border-color: #cb7b42;
 }
 
-/* Изображение комнаты */
 .room-card-image {
     position: relative;
     height: 220px;
@@ -1833,7 +1358,6 @@ label {
     filter: grayscale(0%) contrast(120%);
 }
 
-/* Плейсхолдер для отсутствующего изображения */
 .room-image-placeholder {
     width: 100%;
     height: 100%;
@@ -1869,7 +1393,6 @@ label {
     letter-spacing: 2px;
 }
 
-/* Оверлей при наведении */
 .room-overlay {
     position: absolute;
     top: 0;
@@ -1899,7 +1422,6 @@ label {
     background: rgba(0, 0, 0, 0.7);
 }
 
-/* Тело карточки */
 .room-card-body {
     padding: 1.2rem;
 }
@@ -1938,39 +1460,12 @@ label {
     font-family: monospace;
 }
 
-/* Пустое состояние */
 .empty-state {
     text-align: center;
     padding: 4rem 2rem;
     background: #0c0e0a;
     border: 2px dashed #3a2c22;
     margin: 2rem 0;
-}
-
-.empty-icon {
-    font-size: 4rem;
-    margin-bottom: 1rem;
-    animation: emptyPulse 2s ease-in-out infinite;
-    display: inline-block;
-}
-
-@keyframes emptyPulse {
-    0%, 100% {
-        transform: scale(1);
-        opacity: 0.5;
-    }
-    50% {
-        transform: scale(1.1);
-        opacity: 1;
-    }
-}
-
-.empty-state h3 {
-    font-size: 1.5rem;
-    letter-spacing: 4px;
-    color: #8a6548;
-    margin-bottom: 1rem;
-    font-family: 'Courier New', monospace;
 }
 
 .empty-state p {
@@ -1986,52 +1481,6 @@ label {
     text-decoration: none;
 }
 
-/* Адаптивность */
-@media (max-width: 768px) {
-    .rooms-wrapper {
-        padding: 1rem 1rem 2rem 1rem;
-    }
-
-    .rooms-header {
-        flex-direction: column;
-        align-items: stretch;
-        gap: 1rem;
-    }
-
-    .header-left h2 {
-        font-size: 1.5rem;
-    }
-
-    .create-btn {
-        text-align: center;
-    }
-
-    .rooms-grid {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-    }
-
-    .room-card-image {
-        height: 200px;
-    }
-
-    .room-title {
-        font-size: 1rem;
-    }
-}
-
-@media (min-width: 769px) and (max-width: 1024px) {
-    .rooms-grid {
-        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-        gap: 1.5rem;
-    }
-}
-
-/* ============================================
-   СТРАНИЦА СОЗДАНИЯ КОМНАТЫ
-============================================ */
-
-/* Контейнер формы */
 .room-form-container {
     display: flex;
     justify-content: center;
@@ -2040,7 +1489,6 @@ label {
     padding: 2rem 1rem;
 }
 
-/* Карточка формы */
 .room-form-card {
     max-width: 600px;
     width: 100%;
@@ -2062,13 +1510,11 @@ label {
     animation: holsterGlow 2s ease-in-out infinite;
 }
 
-/* Действия формы */
 .form-actions {
     margin-top: 2rem;
     gap: 1rem;
 }
 
-/* Контейнер для тэгов */
 .tags-container {
     background: #0f0e0c;
     border: 1px solid #5c3f2e;
@@ -2077,7 +1523,6 @@ label {
     overflow-y: auto;
 }
 
-/* Стили для чекбоксов тэгов */
 .roulette-checkbox-group {
     display: flex;
     flex-wrap: wrap;
@@ -2111,7 +1556,6 @@ label {
     text-shadow: 0 0 2px #cb7b42;
 }
 
-/* Кастомизация скроллбара для контейнера тэгов */
 .tags-container::-webkit-scrollbar {
     width: 6px;
 }
@@ -2129,66 +1573,24 @@ label {
     background: #a67452;
 }
 
-/* Кнопка создания комнаты */
-.save-btn {
-    background: #5c3a28;
-    border: 1px solid #ab784c;
-    color: #f2e1c0;
-}
-
-.save-btn:hover {
-    background: #7a5038;
-    border-color: #e0b17a;
-    box-shadow: 0 0 8px #b87a48;
-    letter-spacing: 4px;
-}
-
-/* Адаптация для мобильных */
-@media (max-width: 680px) {
-    .room-form-card {
-        max-width: 95%;
-    }
-
-    .form-actions {
-        flex-direction: column;
-    }
-
-    .tags-container {
-        max-height: 150px;
-    }
-
-    .roulette-checkbox-group {
-        flex-direction: column;
-        gap: 0.5rem;
-    }
-}
-
-/* ============================================
-   СТРАНИЦА КОМНАТЫ - BUCKSHOT ROULETTE STYLE
-============================================ */
-
-/* Основной контейнер */
 .room-detail-wrapper {
     padding: 1rem;
     max-width: 1600px;
     margin: 0 auto;
 }
 
-/* Сетка комнаты */
 .room-grid {
     display: grid;
     grid-template-columns: 380px 1fr;
     gap: 1.5rem;
 }
 
-/* Левая панель */
 .room-sidebar {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
 }
 
-/* Карточка информации о комнате */
 .room-info-card {
     background: #0c0e0a;
     border: 1px solid #3a2c22;
@@ -2220,7 +1622,6 @@ label {
     word-break: break-word;
 }
 
-/* Изображение комнаты */
 .room-image-container {
     position: relative;
     margin: 1rem 0;
@@ -2245,7 +1646,6 @@ label {
     pointer-events: none;
 }
 
-/* Тэги */
 .room-tags {
     margin: 1rem 0;
 }
@@ -2275,7 +1675,6 @@ label {
     letter-spacing: 1px;
 }
 
-/* Действия владельца */
 .room-owner-actions {
     display: flex;
     gap: 0.8rem;
@@ -2292,7 +1691,6 @@ label {
     text-decoration: none;
 }
 
-/* Карточка чата */
 .chat-card {
     background: #0c0e0a;
     border: 1px solid #3a2c22;
@@ -2312,10 +1710,6 @@ label {
     flex-wrap: wrap;
 }
 
-.chat-icon {
-    font-size: 1.2rem;
-}
-
 .chat-title {
     flex: 1;
     font-size: 0.9rem;
@@ -2325,19 +1719,6 @@ label {
     font-family: monospace;
 }
 
-.chat-status {
-    font-size: 0.7rem;
-    color: #8ab86a;
-    font-family: monospace;
-    animation: statusBlink 1.5s ease-in-out infinite;
-}
-
-@keyframes statusBlink {
-    0%, 100% { opacity: 0.6; }
-    50% { opacity: 1; text-shadow: 0 0 3px #8ab86a; }
-}
-
-/* Сообщения чата */
 .chat-messages {
     flex: 1;
     overflow-y: auto;
@@ -2348,17 +1729,6 @@ label {
 .message-center {
     text-align: center;
     padding: 2rem;
-}
-
-.message-icon {
-    font-size: 3rem;
-    animation: messagePulse 2s ease-in-out infinite;
-    display: inline-block;
-}
-
-@keyframes messagePulse {
-    0%, 100% { transform: scale(1); opacity: 0.5; }
-    50% { transform: scale(1.1); opacity: 1; }
 }
 
 .message-placeholder {
@@ -2390,7 +1760,6 @@ label {
     50% { opacity: 1; }
 }
 
-/* Ввод чата */
 .chat-input-container {
     display: flex;
     gap: 0.5rem;
@@ -2431,7 +1800,6 @@ label {
     cursor: not-allowed;
 }
 
-/* Правая панель видео */
 .video-panel {
     position: sticky;
     top: 1rem;
@@ -2455,10 +1823,6 @@ label {
     flex-wrap: wrap;
 }
 
-.video-icon {
-    font-size: 1.2rem;
-}
-
 .video-title {
     flex: 1;
     font-size: 0.9rem;
@@ -2468,15 +1832,6 @@ label {
     font-family: monospace;
 }
 
-.video-badge {
-    font-size: 0.65rem;
-    color: #cb7b42;
-    font-family: monospace;
-    border: 1px solid #cb7b42;
-    padding: 0.2rem 0.5rem;
-}
-
-/* Видео контейнер */
 .video-container {
     aspect-ratio: 16 / 9;
     background: #010101;
@@ -2527,86 +1882,6 @@ label {
     margin-top: 0.5rem;
 }
 
-/* Видео контролы */
-.video-controls {
-    display: flex;
-    gap: 0.5rem;
-    padding: 0.8rem;
-    background: #050705;
-    border-top: 1px solid #2a221c;
-}
-
-.control-btn {
-    flex: 1;
-    background: #1a1510;
-    border: 1px solid #5c3a28;
-    color: #d8c9b0;
-    padding: 0.4rem;
-    font-family: monospace;
-    font-size: 0.7rem;
-    cursor: pointer;
-    transition: 0.2s;
-}
-
-.control-btn:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-}
-
-.control-btn:hover:not(:disabled) {
-    background: #5c3a28;
-    border-color: #cb7b42;
-}
-
-/* Адаптивность */
-@media (max-width: 1024px) {
-    .room-grid {
-        grid-template-columns: 1fr;
-        gap: 1rem;
-    }
-
-    .video-panel {
-        position: static;
-    }
-
-    .room-sidebar {
-        order: 2;
-    }
-
-    .video-panel {
-        order: 1;
-    }
-}
-
-@media (max-width: 680px) {
-    .room-detail-wrapper {
-        padding: 0.5rem;
-    }
-
-    .room-info-header {
-        flex-direction: column;
-        align-items: stretch;
-    }
-
-    .room-owner-actions {
-        flex-direction: column;
-    }
-
-    .video-controls {
-        flex-wrap: wrap;
-    }
-
-    .chat-header {
-        flex-direction: column;
-        text-align: center;
-    }
-}
-
-/* ============================================
-   СТРАНИЦА РЕДАКТИРОВАНИЯ КОМНАТЫ
-============================================ */
-
-/* Заголовок с предупреждением */
 .warning-header {
     background: #1a1508;
     border-bottom-color: #c9a06a;
@@ -2617,18 +1892,10 @@ label {
     text-shadow: 0 0 3px #c9a06a;
 }
 
-.profile-badge.warning {
-    background: #1a1508;
-    border-color: #c9a06a;
-    color: #e7caa4;
-}
-
-/* Карточка редактирования */
 .edit-room-card {
     max-width: 600px;
 }
 
-/* Текущее изображение */
 .current-image-container {
     margin-bottom: 1rem;
     padding: 0.8rem;
@@ -2662,7 +1929,6 @@ label {
     letter-spacing: 1px;
 }
 
-/* Кнопка сохранения изменений (желтая тема) */
 .btn-warning-roulette {
     background: #8a6a2a;
     border: 1px solid #c9a06a;
@@ -2685,22 +1951,10 @@ label {
     letter-spacing: 3px;
 }
 
-/* Адаптация для мобильных */
-@media (max-width: 680px) {
-    .edit-room-card {
-        max-width: 95%;
-    }
-
-    .current-room-image {
-        max-height: 120px;
-    }
-
-    .image-label {
-        font-size: 0.55rem;
-    }
+.edit-room-card {
+    animation: warningPulse 2s ease-in-out infinite;
 }
 
-/* Анимация для предупреждения */
 @keyframes warningPulse {
     0%, 100% {
         box-shadow: 0 0 0px rgba(201, 160, 106, 0);
@@ -2710,33 +1964,12 @@ label {
     }
 }
 
-.edit-room-card {
-    animation: warningPulse 2s ease-in-out infinite;
-}
-
-/* ============================================
-   СТРАНИЦА УДАЛЕНИЯ КОМНАТЫ
-============================================ */
-
-/* Карточка удаления комнаты */
 .room-delete-card {
     max-width: 550px;
     border-color: #8a3a2a;
     animation: deleteGlow 2s ease-in-out infinite;
 }
 
-@keyframes deleteGlow {
-    0%, 100% {
-        box-shadow: 12px 12px 0 rgba(0, 0, 0, 0.5);
-        border-color: #8a3a2a;
-    }
-    50% {
-        box-shadow: 12px 12px 0 rgba(0, 0, 0, 0.5), 0 0 15px rgba(196, 81, 44, 0.3);
-        border-color: #c4512c;
-    }
-}
-
-/* Изображение комнаты в предупреждении */
 .room-image-warning {
     margin: 1rem 0;
     padding: 0.8rem;
@@ -2761,7 +1994,6 @@ label {
     letter-spacing: 1px;
 }
 
-/* Специфичные стили для кнопки удаления комнаты */
 .room-delete-card .confirm-delete {
     background: #2a1510;
     border: 1.5px solid #c4512c;
@@ -2778,7 +2010,6 @@ label {
     letter-spacing: 3px;
 }
 
-/* Анимация для текста комнаты */
 .warning-message strong {
     color: #e6a07a;
     text-transform: uppercase;
@@ -2795,21 +2026,17 @@ label {
     }
 }
 
-/* Адаптация для мобильных */
-@media (max-width: 680px) {
-    .room-delete-card {
-        max-width: 95%;
-    }
+.btn-danger-roulette {
+    background: #341e16;
+    border: 1px solid #924e2c;
+    color: #f0bc8c;
+    padding: 0.35rem 0.9rem;
+    font-family: monospace;
+    transition: 0.1s;
+}
 
-    .warning-room-image {
-        max-height: 100px;
-    }
-
-    .warning-message p {
-        font-size: 0.85rem;
-    }
-
-    .warning-list span {
-        font-size: 0.7rem;
-    }
+.btn-danger-roulette:hover {
+    background: #572e1c;
+    border-color: #e69055;
+    color: #fff0da;
 }

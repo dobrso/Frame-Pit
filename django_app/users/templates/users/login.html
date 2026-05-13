@@ -2,7 +2,7 @@
 {% load socialaccount %}
 
 {% block title %}
-    Вход — Frame Pit
+    Вход
 {% endblock %}
 
 {% block content %}
@@ -16,7 +16,6 @@
             <form method="post">
                 {% csrf_token %}
 
-                <!-- Имя пользователя -->
                 <div class="input-group-login">
                     <label for="{{ form.username.id_for_label }}" class="login-label">
                         ИМЯ ПОЛЬЗОВАТЕЛЯ
@@ -31,7 +30,6 @@
                     {% endif %}
                 </div>
 
-                <!-- Пароль -->
                 <div class="input-group-login">
                     <label for="{{ form.password.id_for_label }}" class="login-label">
                         ПАРОЛЬ
@@ -46,7 +44,6 @@
                     {% endif %}
                 </div>
 
-                <!-- Общая ошибка формы -->
                 {% if form.non_field_errors %}
                     <div class="error-message" style="margin-bottom: 1rem;">
                         {% for error in form.non_field_errors %}
@@ -60,12 +57,10 @@
                 </button>
             </form>
 
-            <!-- OAuth разделитель -->
             <div class="oauth-divider">
                 ИЛИ ЧЕРЕЗ СОЦСЕТИ
             </div>
 
-            <!-- Кнопки OAuth -->
             <div class="oauth-buttons">
                 <a href="{% provider_login_url 'github' %}" class="btn-oauth btn-github">
                     GitHub

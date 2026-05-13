@@ -1,15 +1,13 @@
 {% extends 'base.html' %}
 
 {% block title %}
-    Комната {{ room.name }} — Frame Pit
+    Комната {{ room.name }}
 {% endblock %}
 
 {% block content %}
 <div class="room-detail-wrapper">
     <div class="room-grid">
-        <!-- Левая панель: Информация и чат -->
         <div class="room-sidebar">
-            <!-- Информация о комнате -->
             <div class="room-info-card">
                 <div class="room-info-header">
                     <a href="{% url 'rooms:room_leave' room.id %}" class="btn-danger-roulette leave-btn">
@@ -48,7 +46,6 @@
                 {% endif %}
             </div>
 
-            <!-- Чат -->
             <div class="chat-card">
                 <div class="chat-header">
                     <h5 class="chat-title">ЧАТ</h5>
@@ -68,7 +65,6 @@
             </div>
         </div>
 
-        <!-- Правая панель: Видео -->
         <div class="video-panel">
             <div class="video-card">
                 <div class="video-header">

@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block title %}
-    Регистрация — Frame Pit
+    Регистрация
 {% endblock %}
 
 {% block content %}
@@ -15,7 +15,6 @@
             <form method="post">
                 {% csrf_token %}
 
-                <!-- Имя пользователя -->
                 <div class="input-group-login">
                     <label for="{{ form.username.id_for_label }}" class="login-label">
                         ИМЯ ПОЛЬЗОВАТЕЛЯ
@@ -33,7 +32,6 @@
                     {% endif %}
                 </div>
 
-                <!-- Email -->
                 <div class="input-group-login">
                     <label for="{{ form.email.id_for_label }}" class="login-label">
                         EMAIL
@@ -48,7 +46,6 @@
                     {% endif %}
                 </div>
 
-                <!-- Пароль -->
                 <div class="input-group-login">
                     <label for="{{ form.password1.id_for_label }}" class="login-label">
                         ПАРОЛЬ
@@ -66,7 +63,6 @@
                     {% endif %}
                 </div>
 
-                <!-- Подтверждение пароля -->
                 <div class="input-group-login">
                     <label for="{{ form.password2.id_for_label }}" class="login-label">
                         ПОДТВЕРЖДЕНИЕ ПАРОЛЯ

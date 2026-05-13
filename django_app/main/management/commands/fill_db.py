@@ -20,7 +20,7 @@ class Command(BaseCommand):
 
         if not User.objects.filter(username='framepitadmin').exists():
             admin = User.objects.create_superuser(username='framepitadmin', email='framepit@example.com', password='framepitadmin')
-            Profile.objects.create(user=admin)
+            Profile.objects.get_or_create(user=admin)
             self.stdout.write('Создан админ')
 
         for i in range(5):
@@ -30,7 +30,7 @@ class Command(BaseCommand):
             if created:
                 user.set_password(name)
                 user.save()
-                Profile.objects.create(user=user)
+                Profile.objects.get_or_create(user=user)
                 self.stdout.write(f'Создан пользователь {name}')
             users.append(user)
 
@@ -41,8 +41,8 @@ class Command(BaseCommand):
         tags = []
 
         for name in names:
-            Tag.objects.get_or_create(name=name)
-            tags.append(name)
+            tag, _ = Tag.objects.get_or_create(name=name)
+            tags.append(tag)
 
         self.stdout.write('Созданы теги')
         return tags

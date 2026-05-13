@@ -1,13 +1,18 @@
 {% extends 'base.html' %}
 
 {% block title %}
-    Главная страница
+    Frame Pit — Buckshot Roulette
 {% endblock %}
 
 {% block content %}
-    <div class="d-flex justify-content-center align-items-center" style="min-height: 80vh;">
-        <a href="{% url 'rooms:rooms_list' %}" class="btn btn-primary btn-lg">
-            Начать просмотр
-        </a>
+    <div class="landing-container">
+        <div class="landing-glow">
+            <div class="roulette-tagline">
+                ⚡ ПРОВЕРЬ СВОЮ УДАЧУ ⚡
+            </div>
+            <a href="{% url 'rooms:rooms_list' %}" class="btn-roulette-main">
+                НАЧАТЬ ПРОСМОТР
+            </a>
+        </div>
     </div>
 {% endblock %}

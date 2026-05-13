@@ -1,43 +1,79 @@
 {% extends 'base.html' %}
 
 {% block title %}
-    Редактирование профиля {{ profile.user.username }}
+    Редактирование профиля — Frame Pit
 {% endblock %}
 
 {% block content %}
-<div class="container mt-4">
-    <div class="row justify-content-center">
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-header text-center">
-                    <h3 class="mb-0">Редактирование профиля</h3>
+<div class="profile-wrapper">
+    <div class="profile-card edit-card">
+        <div class="profile-header">
+            <h3>РЕДАКТИРОВАНИЕ</h3>
+        </div>
+
+        <div class="profile-body">
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+
+                <!-- Фото профиля -->
+                <div class="avatar-edit-section">
+                    <div class="avatar-preview">
+                        {% if profile.image %}
+                            <img src="{{ profile.image.url }}" alt="Фото профиля"
+                                 class="profile-avatar edit-avatar">
+                        {% else %}
+                            <div class="avatar-placeholder edit-placeholder">
+                                <span class="avatar-icon">🔫</span>
+                            </div>
+                        {% endif %}
+                        <div class="avatar-overlay">
+                            <span class="overlay-icon">📷</span>
+                        </div>
+                    </div>
+
+                    <div class="avatar-input-group">
+                        <label for="{{ form.image.id_for_label }}" class="login-label">
+                            ФОТО ПРОФИЛЯ
+                        </label>
+                        {{ form.image }}
+                        {% if form.image.help_text %}
+                            <small class="help-text">{{ form.image.help_text }}</small>
+                        {% endif %}
+                        {% if form.image.errors %}
+                            <div class="error-list">
+                                {% for error in form.image.errors %}
+                                    <div class="error-message">{{ error }}</div>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
                 </div>
-                <div class="card-body">
-                    <form method="post" enctype="multipart/form-data">
-                        {% csrf_token %}
 
-                        <div class="mb-3 text-center">
-                            {% if profile.image %}
-                                <img src="{{ profile.image.url }}" alt="Фото профиля"
-                                     class="img-thumbnail rounded-circle mb-2"
-                                     width="120" height="120" style="object-fit: cover;">
-                            {% endif %}
-                            <label class="form-label d-block">Фото профиля</label>
-                            {{ form.image }}
+                <!-- Описание -->
+                <div class="input-group-login">
+                    <label for="{{ form.description.id_for_label }}" class="login-label">
+                        ДОСЬЕ / ОПИСАНИЕ
+                    </label>
+                    {{ form.description }}
+                    <small class="help-text">Расскажите о себе, дилеру будет интересно</small>
+                    {% if form.description.errors %}
+                        <div class="error-list">
+                            {% for error in form.description.errors %}
+                                <div class="error-message">{{ error }}</div>
+                            {% endfor %}
                         </div>
-
-                        <div class="mb-3">
-                            <label class="form-label">Описание</label>
-                            {{ form.description }}
-                        </div>
-
-                        <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-4">
-                            <a href="{% url 'users:profile_detail' user.id %}" class="btn btn-secondary">Отмена</a>
-                            <button type="submit" class="btn btn-primary">Сохранить</button>
-                        </div>
-                    </form>
+                    {% endif %}
                 </div>
-            </div>
+
+                <div class="profile-actions edit-actions">
+                    <a href="{% url 'users:profile_detail' user.id %}" class="btn-outline-roulette cancel-btn">
+                        ОТМЕНА
+                    </a>
+                    <button type="submit" class="btn-solid-roulette save-btn">
+                        СОХРАНИТЬ
+                    </button>
+                </div>
+            </form>
         </div>
     </div>
 </div>

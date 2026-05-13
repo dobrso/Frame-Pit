@@ -2,74 +2,83 @@
 {% load socialaccount %}
 
 {% block title %}
-    Вход
+    Вход — Frame Pit
 {% endblock %}
 
 {% block content %}
-<div class="container mt-5">
-    <div class="row justify-content-center">
-        <div class="col-md-4">
-            <div class="card shadow-sm">
-                <div class="card-header bg-primary text-white text-center">
-                    <h3 class="mb-0">Вход в аккаунт</h3>
-                </div>
-                <div class="card-body">
-                    <form method="post">
-                        {% csrf_token %}
+<div class="login-wrapper">
+    <div class="login-card">
+        <div class="login-header">
+            <h3>ВХОД</h3>
+        </div>
 
-                        <!-- Имя пользователя -->
-                        <div class="mb-3">
-                            <label for="{{ form.username.id_for_label }}" class="form-label">
-                                Имя пользователя
-                            </label>
-                            {{ form.username }}
+        <div class="login-body">
+            <form method="post">
+                {% csrf_token %}
+
+                <!-- Имя пользователя -->
+                <div class="input-group-login">
+                    <label for="{{ form.username.id_for_label }}" class="login-label">
+                        ИМЯ ПОЛЬЗОВАТЕЛЯ
+                    </label>
+                    {{ form.username }}
+                    {% if form.username.errors %}
+                        <div class="error-list">
                             {% for error in form.username.errors %}
-                                <div class="alert alert-danger mt-1 py-1">{{ error }}</div>
+                                <div class="error-message">{{ error }}</div>
                             {% endfor %}
                         </div>
+                    {% endif %}
+                </div>
 
-                        <!-- Пароль -->
-                        <div class="mb-3">
-                            <label for="{{ form.password.id_for_label }}" class="form-label">
-                                Пароль
-                            </label>
-                            {{ form.password }}
+                <!-- Пароль -->
+                <div class="input-group-login">
+                    <label for="{{ form.password.id_for_label }}" class="login-label">
+                        ПАРОЛЬ
+                    </label>
+                    {{ form.password }}
+                    {% if form.password.errors %}
+                        <div class="error-list">
                             {% for error in form.password.errors %}
-                                <div class="alert alert-danger mt-1 py-1">{{ error }}</div>
+                                <div class="error-message">{{ error }}</div>
                             {% endfor %}
                         </div>
+                    {% endif %}
+                </div>
 
-                        <!-- Общая ошибка формы -->
-                        {% if form.non_field_errors %}
-                            <div class="alert alert-danger">
-                                {% for error in form.non_field_errors %}
-                                    {{ error }}
-                                {% endfor %}
-                            </div>
-                        {% endif %}
+                <!-- Общая ошибка формы -->
+                {% if form.non_field_errors %}
+                    <div class="error-message" style="margin-bottom: 1rem;">
+                        {% for error in form.non_field_errors %}
+                            {{ error }}
+                        {% endfor %}
+                    </div>
+                {% endif %}
 
-                        <button type="submit" class="btn btn-primary w-100">
-                            Войти
-                        </button>
-                    </form>
-                </div>
-                <div class="card-footer bg-white">
-                    <div class="text-center mb-2">
-                        Нет аккаунта? <a href="{% url 'users:register' %}" class="text-decoration-none">Зарегистрироваться</a>
-                    </div>
-                    <div class="text-center">
-                        <a href="{% url 'users:password_reset' %}" class="text-decoration-none small">
-                            Забыли пароль?
-                        </a>
-                    </div>
-                </div>
-                <div>
-                    <a href="{% provider_login_url 'github' %}">Войти через GitHub</a>
-                </div>
-                <div>
-                    <a href="{% provider_login_url 'yandex' %}">Войти через Яндекс</a>
-                </div>
+                <button type="submit" class="btn-solid-roulette">
+                    ВОЙТИ
+                </button>
+            </form>
+
+            <!-- OAuth разделитель -->
+            <div class="oauth-divider">
+                ИЛИ ЧЕРЕЗ СОЦСЕТИ
             </div>
+
+            <!-- Кнопки OAuth -->
+            <div class="oauth-buttons">
+                <a href="{% provider_login_url 'github' %}" class="btn-oauth btn-github">
+                    GitHub
+                </a>
+                <a href="{% provider_login_url 'yandex' %}" class="btn-oauth btn-yandex">
+                    Яндекс
+                </a>
+            </div>
+        </div>
+
+        <div class="login-footer">
+            <p>Нет аккаунта? <a href="{% url 'users:register' %}">ЗАРЕГИСТРИРОВАТЬСЯ</a></p>
+            <p><a href="{% url 'users:password_reset' %}" class="small">ЗАБЫЛИ ПАРОЛЬ?</a></p>
         </div>
     </div>
 </div>

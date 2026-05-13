@@ -1,0 +1,1734 @@
+/* ============================================
+   RESET & GLOBAL – Buckshot Roulette inspired
+   Dark, gritty, industrial, high contrast
+============================================ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #0a0c0f;
+    font-family: 'Courier New', 'Fira Code', 'Monaco', monospace;
+    color: #dbd8cf;
+    line-height: 1.5;
+    min-height: 100vh;
+    background-image: radial-gradient(circle at 10% 20%, rgba(30, 20, 15, 0.6) 2%, #030405 90%);
+    background-attachment: fixed;
+}
+
+/* custom scrollbar – rusty/industrial */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #1e1a17;
+    border-left: 1px solid #3e2c24;
+}
+::-webkit-scrollbar-thumb {
+    background: #7a5a4a;
+    border-radius: 0px;
+    box-shadow: inset 0 0 2px #cc9f7a;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #a67452;
+}
+
+/* TYPOGRAPHY – rough, typewriter feel */
+h1, h2, h3, h4, .h4-like {
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    font-family: 'Courier New', 'Lucida Console', monospace;
+}
+
+a {
+    text-decoration: none;
+    color: #d8c9b0;
+    transition: all 0.2s ease;
+}
+
+a:hover {
+    color: #f0dbb2;
+    text-shadow: 0 0 3px #ab7b54;
+}
+
+button, .btn-like {
+    cursor: pointer;
+    border: none;
+    background: none;
+    font-family: inherit;
+}
+
+/* Header – industrial bunker style */
+.site-header {
+    background: #050505dd;
+    backdrop-filter: blur(8px);
+    border-bottom: 2px solid #5c3e2e;
+    padding: 1rem 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,215,170,0.1);
+}
+
+.header-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.brand {
+    font-size: 1.9rem;
+    font-weight: bold;
+    letter-spacing: 3px;
+    background: linear-gradient(135deg, #c7a46b, #ecbe8b);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0 0 2px #3b281e;
+    border-right: 3px solid #8b5a3c;
+    padding-right: 1rem;
+    font-family: 'Courier New', monospace;
+}
+
+.nav-buttons {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+/* Industrial buttons – no bootstrap */
+.btn-outline-roulette {
+    background: transparent;
+    border: 1.5px solid #7a5a4a;
+    color: #d8c9b0;
+    padding: 0.4rem 1rem;
+    font-size: 0.85rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: 0.2s;
+    font-family: monospace;
+    cursor: pointer;
+}
+.btn-outline-roulette:hover {
+    background: #7a5a4a;
+    color: #0a0c0f;
+    border-color: #c99a6a;
+    box-shadow: 0 0 6px #aa794e;
+}
+
+.btn-solid-roulette {
+    background: #5c3a28;
+    border: 1px solid #ab784c;
+    color: #f2e1c0;
+    padding: 0.4rem 1.2rem;
+    font-size: 0.85rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-family: monospace;
+    cursor: pointer;
+    transition: 0.2s;
+}
+.btn-solid-roulette:hover {
+    background: #7a5038;
+    border-color: #e0b17a;
+    box-shadow: 0 0 5px #b87a48;
+}
+
+/* Main container */
+.main-container {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 1.5rem 3rem 1.5rem;
+}
+
+/* Room cards & video-like grit */
+.room-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.room-card {
+    background: #11130f;
+    border-left: 6px solid #a3643a;
+    border-bottom: 2px solid #2f261f;
+    padding: 1.2rem;
+    transition: transform 0.1s ease, box-shadow 0.2s;
+    box-shadow: 8px 8px 0 rgba(0,0,0,0.4);
+}
+.room-card:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 12px 12px 0 rgba(0,0,0,0.5);
+    border-left-color: #ce8d58;
+}
+
+.room-title {
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: #e7caa4;
+    margin-bottom: 0.5rem;
+    word-break: break-word;
+}
+
+.room-meta {
+    font-size: 0.75rem;
+    color: #997f64;
+    border-top: 1px dashed #3a2c22;
+    margin-top: 0.8rem;
+    padding-top: 0.6rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Формы, поля ввода (без bootstrap) */
+.roulette-input {
+    background: #0f0e0c;
+    border: 1px solid #5c3f2e;
+    padding: 0.7rem 1rem;
+    color: #eedbba;
+    font-family: monospace;
+    font-size: 1rem;
+    width: 100%;
+    outline: none;
+    transition: 0.15s;
+}
+.roulette-input:focus {
+    border-color: #bc8260;
+    box-shadow: 0 0 5px #9b623f;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.4rem;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #bfa07e;
+}
+
+/* Chat-like area (preview) */
+.chat-preview {
+    background: #090b09;
+    border: 1px solid #30261e;
+    padding: 1rem;
+    margin-top: 1rem;
+    height: 300px;
+    overflow-y: auto;
+    font-family: monospace;
+    font-size: 0.9rem;
+}
+.message-line {
+    border-bottom: 1px dotted #2a221c;
+    padding: 0.4rem 0;
+    color: #cfbc9f;
+}
+.message-user {
+    color: #e7bc7e;
+    font-weight: bold;
+}
+
+.video-placeholder {
+    background: #010101;
+    border: 3px solid #32261f;
+    aspect-ratio: 16 / 9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    color: #6f5540;
+    background-image: repeating-linear-gradient(45deg, #17130f 0px, #17130f 2px, #0b0907 2px, #0b0907 8px);
+}
+
+/* Кнопка опасности (выйти) */
+.btn-danger-roulette {
+    background: #341e16;
+    border: 1px solid #924e2c;
+    color: #f0bc8c;
+    padding: 0.35rem 0.9rem;
+    font-family: monospace;
+    transition: 0.1s;
+}
+.btn-danger-roulette:hover {
+    background: #572e1c;
+    border-color: #e69055;
+    color: #fff0da;
+}
+
+/* profile detail block */
+.profile-card {
+    background: #0c0d0a;
+    border: 1px solid #3b2d22;
+    padding: 2rem;
+    box-shadow: 10px 10px 0 #00000055;
+}
+
+/* ============================================
+   LANDING PAGE - BUCKSHOT ROULETTE STYLE
+   Мерцающая кнопка, атмосфера подпольной рулетки
+============================================ */
+
+/* Контейнер лендинга - центр экрана с драматичным фоном */
+.landing-container {
+    min-height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+/* Мерцающий фон с эффектом "дымки" и пульсации */
+.landing-glow {
+    position: relative;
+    text-align: center;
+}
+
+/* Основная мерцающая кнопка - стиль револьвера/рулетки */
+.btn-roulette-main {
+    display: inline-block;
+    background: linear-gradient(135deg, #2a1a12 0%, #1c110a 100%);
+    color: #f0dbb2;
+    font-family: 'Courier New', 'Fira Code', monospace;
+    font-size: 2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 6px;
+    padding: 1.2rem 3rem;
+    border: 2px solid #8b5a3c;
+    border-radius: 0px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 0 15px rgba(139, 90, 60, 0.3);
+    animation: shotgunPulse 1.8s ease-in-out infinite;
+}
+
+/* Эффект мерцания как у лампы в Buckshot Roulette */
+@keyframes shotgunPulse {
+    0% {
+        box-shadow: 0 0 5px rgba(203, 123, 66, 0.3),
+                    inset 0 0 5px rgba(203, 123, 66, 0.2);
+        border-color: #8b5a3c;
+        text-shadow: 0 0 2px rgba(240, 219, 178, 0.5);
+        background: linear-gradient(135deg, #2a1a12 0%, #1c110a 100%);
+    }
+    30% {
+        box-shadow: 0 0 25px rgba(203, 123, 66, 0.8),
+                    0 0 8px rgba(220, 140, 80, 0.6),
+                    inset 0 0 8px rgba(203, 123, 66, 0.4);
+        border-color: #cb7b42;
+        text-shadow: 0 0 8px rgba(240, 219, 178, 0.8);
+        background: linear-gradient(135deg, #362214 0%, #24160e 100%);
+    }
+    50% {
+        box-shadow: 0 0 12px rgba(203, 123, 66, 0.5),
+                    inset 0 0 3px rgba(203, 123, 66, 0.3);
+        border-color: #a56a43;
+        text-shadow: 0 0 4px rgba(240, 219, 178, 0.6);
+    }
+    70% {
+        box-shadow: 0 0 30px rgba(203, 123, 66, 1),
+                    0 0 12px rgba(220, 140, 80, 0.9),
+                    inset 0 0 12px rgba(203, 123, 66, 0.5);
+        border-color: #e68a4a;
+        text-shadow: 0 0 12px rgba(240, 219, 178, 1);
+        background: linear-gradient(135deg, #412a1a 0%, #2c1a10 100%);
+    }
+    100% {
+        box-shadow: 0 0 5px rgba(203, 123, 66, 0.3),
+                    inset 0 0 5px rgba(203, 123, 66, 0.2);
+        border-color: #8b5a3c;
+        text-shadow: 0 0 2px rgba(240, 219, 178, 0.5);
+        background: linear-gradient(135deg, #2a1a12 0%, #1c110a 100%);
+    }
+}
+
+/* Эффект "перезарядки" при наведении */
+.btn-roulette-main:hover {
+    animation: shotgunBlast 0.3s ease-out;
+    transform: scale(1.02);
+    color: #fff0da;
+    border-color: #f0a063;
+    box-shadow: 0 0 40px rgba(240, 160, 99, 0.8);
+}
+
+@keyframes shotgunBlast {
+    0% {
+        transform: scale(1);
+        letter-spacing: 6px;
+    }
+    50% {
+        transform: scale(1.05);
+        letter-spacing: 8px;
+        text-shadow: 0 0 20px #ffcc88;
+    }
+    100% {
+        transform: scale(1.02);
+        letter-spacing: 6px;
+    }
+}
+
+/* Дополнительный эффект "лампы накаливания" - случайное моргание */
+.btn-roulette-main::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 200, 120, 0.2), transparent);
+    transition: left 0.5s;
+    pointer-events: none;
+}
+
+.btn-roulette-main:hover::before {
+    left: 100%;
+}
+
+@keyframes spinRust {
+    0% {
+        transform: rotate(0deg) scale(1);
+        opacity: 0.4;
+    }
+    50% {
+        transform: rotate(180deg) scale(1.2);
+        opacity: 0.8;
+    }
+    100% {
+        transform: rotate(360deg) scale(1);
+        opacity: 0.4;
+    }
+}
+
+/* Опционально - мерцающий текст над кнопкой */
+.roulette-tagline {
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+    letter-spacing: 3px;
+    color: #b88a62;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    animation: flickerText 2.5s infinite;
+}
+
+@keyframes flickerText {
+    0%, 18%, 22%, 25%, 53%, 57%, 100% {
+        text-shadow: 0 0 2px #cb7b42;
+        opacity: 1;
+    }
+    20%, 24%, 55% {
+        text-shadow: 0 0 8px #e68a4a;
+        opacity: 0.6;
+    }
+}
+
+/* ============================================
+   СТРАНИЦА ВХОДА - BUCKSHOT ROULETTE STYLE
+   Переиспользование существующих стилей
+============================================ */
+
+/* Контейнер страницы входа */
+.login-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 180px);
+    padding: 2rem 1rem;
+}
+
+/* Карточка входа - стиль подпольной рулетки */
+.login-card {
+    max-width: 450px;
+    width: 100%;
+    background: #0c0e0a;
+    border: 1px solid #3a2c22;
+    box-shadow: 12px 12px 0 rgba(0, 0, 0, 0.5);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Декоративная полоска сверху как у комнат */
+.login-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #5c3a28, #cb7b42, #5c3a28);
+    animation: holsterGlow 2s ease-in-out infinite;
+}
+
+@keyframes holsterGlow {
+    0%, 100% {
+        opacity: 0.6;
+    }
+    50% {
+        opacity: 1;
+        box-shadow: 0 0 8px #cb7b42;
+    }
+}
+
+/* Заголовок карточки */
+.login-header {
+    background: #050705;
+    border-bottom: 2px solid #5c3e2e;
+    padding: 1.5rem;
+    text-align: center;
+    position: relative;
+}
+
+.login-header h3 {
+    font-size: 1.6rem;
+    letter-spacing: 4px;
+    color: #e7caa4;
+    margin: 0;
+    text-transform: uppercase;
+    font-family: 'Courier New', monospace;
+    text-shadow: 0 0 3px #cb7b42;
+}
+
+.login-header::after {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0.5;
+    font-size: 1.2rem;
+}
+
+/* Тело карточки */
+.login-body {
+    padding: 2rem;
+}
+
+/* Метки полей ввода */
+.login-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #bfa07e;
+    font-family: monospace;
+}
+
+/* Поля ввода (переиспользуем roulette-input) */
+.roulette-input {
+    background: #0f0e0c;
+    border: 1px solid #5c3f2e;
+    padding: 0.7rem 1rem;
+    color: #eedbba;
+    font-family: monospace;
+    font-size: 0.95rem;
+    width: 100%;
+    outline: none;
+    transition: 0.15s;
+}
+
+.roulette-input:focus {
+    border-color: #bc8260;
+    box-shadow: 0 0 5px #9b623f;
+}
+
+/* Группа полей */
+.input-group-login {
+    margin-bottom: 1.5rem;
+}
+
+/* Сообщения об ошибках */
+.error-message {
+    background: #2a1510;
+    border-left: 4px solid #c4512c;
+    padding: 0.5rem 0.8rem;
+    margin-top: 0.5rem;
+    font-size: 0.8rem;
+    color: #e6a07a;
+    font-family: monospace;
+}
+
+.error-list {
+    margin-top: 0.5rem;
+}
+
+/* Кнопка входа (переиспользуем btn-solid-roulette) */
+.btn-solid-roulette {
+    background: #5c3a28;
+    border: 1px solid #ab784c;
+    color: #f2e1c0;
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-family: monospace;
+    cursor: pointer;
+    transition: 0.2s;
+    width: 100%;
+}
+
+.btn-solid-roulette:hover {
+    background: #7a5038;
+    border-color: #e0b17a;
+    box-shadow: 0 0 8px #b87a48;
+    letter-spacing: 4px;
+}
+
+/* Футер карточки */
+.login-footer {
+    background: #080a07;
+    border-top: 1px solid #2a221c;
+    padding: 1.2rem;
+    text-align: center;
+}
+
+.login-footer p {
+    margin: 0 0 0.5rem 0;
+    font-size: 0.8rem;
+}
+
+.login-footer a {
+    color: #c99a6a;
+    text-decoration: none;
+    font-family: monospace;
+    transition: 0.2s;
+}
+
+.login-footer a:hover {
+    color: #f0dbb2;
+    text-shadow: 0 0 3px #ab7b54;
+    letter-spacing: 0.5px;
+}
+
+/* Разделитель для OAuth */
+.oauth-divider {
+    display: flex;
+    align-items: center;
+    margin: 1.5rem 0 1rem;
+    color: #6a4f38;
+    font-size: 0.7rem;
+    font-family: monospace;
+}
+
+.oauth-divider::before,
+.oauth-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: #3a2c22;
+}
+
+.oauth-divider::before {
+    margin-right: 1rem;
+}
+
+.oauth-divider::after {
+    margin-left: 1rem;
+}
+
+/* Кнопки OAuth (GitHub, Яндекс) */
+.oauth-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.btn-oauth {
+    background: #0f110d;
+    border: 1px solid #4a3728;
+    color: #d8c9b0;
+    padding: 0.6rem 1rem;
+    font-family: monospace;
+    font-size: 0.85rem;
+    text-decoration: none;
+    text-align: center;
+    transition: 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.btn-oauth:hover {
+    background: #241c16;
+    border-color: #cb7b42;
+    color: #f0dbb2;
+    box-shadow: 0 0 5px #9b623f;
+    letter-spacing: 1px;
+}
+
+/* Эффект "дыма" для атмосферы */
+.login-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 30px;
+    background: linear-gradient(to top, rgba(10, 8, 6, 0.8), transparent);
+    pointer-events: none;
+}
+
+/* Help text стили */
+.help-text {
+    display: block;
+    font-size: 0.7rem;
+    color: #8a6548;
+    margin-top: 0.4rem;
+    font-family: monospace;
+    letter-spacing: 0.5px;
+    line-height: 1.3;
+}
+
+.help-text ul {
+    margin: 0.3rem 0;
+    padding-left: 1.2rem;
+}
+
+.help-text li {
+    margin: 0.2rem 0;
+    color: #9a7a58;
+}
+
+.help-text strong {
+    color: #cb7b42;
+    font-weight: normal;
+}
+
+/* ============================================
+   СТРАНИЦА ВОССТАНОВЛЕНИЯ ПАРОЛЯ
+   Специфические стили для password reset
+============================================ */
+
+/* Информационный блок */
+.reset-info {
+    text-align: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px dashed #3a2c22;
+}
+
+.reset-icon {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+    animation: skullPulse 2s ease-in-out infinite;
+    display: inline-block;
+}
+
+@keyframes skullPulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 0.6;
+        filter: drop-shadow(0 0 2px #cb7b42);
+    }
+    50% {
+        transform: scale(1.1);
+        opacity: 1;
+        filter: drop-shadow(0 0 8px #e68a4a);
+    }
+}
+
+.reset-info h4 {
+    font-size: 1.3rem;
+    letter-spacing: 3px;
+    color: #e7caa4;
+    margin-bottom: 0.8rem;
+    font-family: 'Courier New', monospace;
+    text-transform: uppercase;
+}
+
+.reset-info p {
+    font-size: 0.8rem;
+    color: #9a7a58;
+    line-height: 1.5;
+    font-family: monospace;
+}
+
+/* Кнопка "Вернуться ко входу" в футере */
+.login-footer .btn-outline-roulette {
+    background: transparent;
+    border: 1.5px solid #7a5a4a;
+    color: #d8c9b0;
+    padding: 0.5rem 1.5rem;
+    font-size: 0.8rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: 0.2s;
+    font-family: monospace;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.login-footer .btn-outline-roulette:hover {
+    background: #7a5a4a;
+    color: #0a0c0f;
+    border-color: #c99a6a;
+    box-shadow: 0 0 6px #aa794e;
+    letter-spacing: 3px;
+}
+
+/* ============================================
+   СТРАНИЦА "ПИСЬМО ОТПРАВЛЕНО"
+   Стили для успешной отправки
+============================================ */
+
+/* Успешное сообщение */
+.success-message {
+    background: #0a120a;
+    border-left: 4px solid #5c8a3a;
+    padding: 1rem;
+    margin: 1.5rem 0;
+    text-align: left;
+}
+
+.success-message p {
+    margin: 0;
+    color: #b8c49a;
+    font-size: 0.85rem;
+    line-height: 1.5;
+}
+
+.success-message strong {
+    color: #8ab86a;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+}
+
+/* Предупреждение */
+.warning-note {
+    background: #1a1510;
+    border: 1px solid #8a6a3a;
+    padding: 0.6rem 1rem;
+    margin: 1rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    font-size: 0.75rem;
+    color: #d8c9b0;
+    font-family: monospace;
+}
+
+.warning-icon {
+    font-size: 1.1rem;
+    animation: warningBlink 1.5s ease-in-out infinite;
+}
+
+@keyframes warningBlink {
+    0%, 100% {
+        opacity: 0.6;
+        text-shadow: 0 0 2px #e6a04a;
+    }
+    50% {
+        opacity: 1;
+        text-shadow: 0 0 8px #e6a04a;
+    }
+}
+
+/* Разделитель */
+.divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #5c3e2e, #cb7b42, #5c3e2e, transparent);
+    margin: 1.5rem 0;
+}
+
+/* Кнопка возврата */
+.back-to-login {
+    text-align: center;
+}
+
+.back-to-login .btn-outline-roulette {
+    display: inline-block;
+    padding: 0.6rem 1.8rem;
+    font-size: 0.85rem;
+}
+
+/* Анимация для конверта */
+.reset-icon {
+    font-size: 3.5rem;
+    margin-bottom: 0.5rem;
+    animation: envelopeFly 2s ease-in-out infinite;
+    display: inline-block;
+}
+
+@keyframes envelopeFly {
+    0%, 100% {
+        transform: translateY(0px) rotate(0deg);
+        filter: drop-shadow(0 0 2px #cb7b42);
+    }
+    25% {
+        transform: translateY(-5px) rotate(-5deg);
+        filter: drop-shadow(0 0 5px #e68a4a);
+    }
+    75% {
+        transform: translateY(-3px) rotate(5deg);
+        filter: drop-shadow(0 0 5px #e68a4a);
+    }
+}
+
+/* Стили для недействительной ссылки */
+.reset-icon.invalid {
+    animation: skullDeath 1.5s ease-in-out infinite;
+    filter: drop-shadow(0 0 4px #c4512c);
+}
+
+@keyframes skullDeath {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 0.7;
+        filter: drop-shadow(0 0 2px #c4512c);
+    }
+    50% {
+        transform: scale(1.15);
+        opacity: 1;
+        filter: drop-shadow(0 0 12px #e06030);
+    }
+}
+
+/* Стили для группы кнопок */
+.button-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.button-group .btn-solid-roulette,
+.button-group .btn-outline-roulette {
+    width: 100%;
+    text-align: center;
+    display: block;
+    box-sizing: border-box;
+}
+
+/* Стили для help text пароля */
+.help-text {
+    display: block;
+    font-size: 0.7rem;
+    color: #8a6548;
+    margin-top: 0.4rem;
+    font-family: monospace;
+    letter-spacing: 0.5px;
+    line-height: 1.3;
+}
+
+.help-text ul {
+    margin: 0.3rem 0;
+    padding-left: 1.2rem;
+}
+
+.help-text li {
+    margin: 0.2rem 0;
+    color: #9a7a58;
+}
+
+.help-text strong {
+    color: #cb7b42;
+    font-weight: normal;
+}
+
+/* ============================================
+   СТРАНИЦА "ПАРОЛЬ ИЗМЕНЕН"
+   Стили для успешного завершения
+============================================ */
+
+/* Успешная иконка */
+.reset-icon.success {
+    animation: successCheck 0.5s ease-out;
+    font-size: 4rem;
+}
+
+@keyframes successCheck {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Сообщение об успехе */
+.success-message.complete {
+    background: #0a120a;
+    border-left: 4px solid #6a9e3a;
+    padding: 1.2rem;
+    margin: 1.5rem 0;
+    text-align: center;
+}
+
+.success-message.complete p {
+    margin: 0;
+    color: #b8c49a;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+/* Анимация барабана с патронами */
+.complete-animation {
+    margin: 1.5rem 0;
+    display: flex;
+    justify-content: center;
+}
+
+.bullet-chamber {
+    display: flex;
+    gap: 0.5rem;
+    background: #0a0806;
+    padding: 0.8rem 1.2rem;
+    border: 1px solid #3a2c22;
+    border-radius: 2px;
+}
+
+.bullet {
+    width: 12px;
+    height: 24px;
+    background: linear-gradient(135deg, #cb7b42, #7a4a2e);
+    border-radius: 2px;
+    animation: bulletLoad 0.6s ease-out forwards;
+    opacity: 0;
+    transform: scaleY(0);
+}
+
+.bullet:nth-child(1) { animation-delay: 0.1s; }
+.bullet:nth-child(2) { animation-delay: 0.2s; }
+.bullet:nth-child(3) { animation-delay: 0.3s; }
+.bullet:nth-child(4) { animation-delay: 0.4s; }
+.bullet:nth-child(5) { animation-delay: 0.5s; }
+.bullet:nth-child(6) { animation-delay: 0.6s; }
+
+@keyframes bulletLoad {
+    0% {
+        opacity: 0;
+        transform: scaleY(0);
+    }
+    100% {
+        opacity: 1;
+        transform: scaleY(1);
+    }
+}
+
+/* Эффект вспышки при успехе */
+.login-card {
+    animation: successFlash 0.8s ease-out;
+}
+
+@keyframes successFlash {
+    0% {
+        box-shadow: 0 0 0 rgba(106, 158, 58, 0);
+        border-color: #3a2c22;
+    }
+    50% {
+        box-shadow: 0 0 30px rgba(106, 158, 58, 0.6);
+        border-color: #8ab86a;
+    }
+    100% {
+        box-shadow: 12px 12px 0 rgba(0, 0, 0, 0.5);
+        border-color: #3a2c22;
+    }
+}
+
+/* ============================================
+   СТРАНИЦА ПРОФИЛЯ - BUCKSHOT ROULETTE STYLE
+============================================ */
+
+/* Контейнер профиля */
+.profile-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 180px);
+    padding: 2rem 1rem;
+}
+
+/* Карточка профиля */
+.profile-card {
+    max-width: 550px;
+    width: 100%;
+    background: #0c0e0a;
+    border: 1px solid #3a2c22;
+    box-shadow: 12px 12px 0 rgba(0, 0, 0, 0.5);
+    position: relative;
+    overflow: hidden;
+}
+
+.profile-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #5c3a28, #cb7b42, #5c3a28);
+    animation: holsterGlow 2s ease-in-out infinite;
+}
+
+/* Заголовок профиля */
+.profile-header {
+    background: #050705;
+    border-bottom: 2px solid #5c3e2e;
+    padding: 1.2rem 1.5rem;
+    text-align: center;
+    position: relative;
+}
+
+.profile-header h3 {
+    font-size: 1.4rem;
+    letter-spacing: 4px;
+    color: #e7caa4;
+    margin: 0;
+    text-transform: uppercase;
+    font-family: 'Courier New', monospace;
+    text-shadow: 0 0 3px #cb7b42;
+}
+
+.profile-badge {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.7rem;
+    color: #8a6548;
+    font-family: monospace;
+    background: #0a0806;
+    padding: 0.2rem 0.6rem;
+    border: 1px solid #3a2c22;
+}
+
+/* Тело профиля */
+.profile-body {
+    padding: 2rem;
+}
+
+/* Аватар */
+.profile-avatar-section {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.avatar-container {
+    position: relative;
+    display: inline-block;
+}
+
+.profile-avatar {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border: 3px solid #5c3a28;
+    filter: grayscale(20%) contrast(120%);
+    transition: all 0.3s ease;
+}
+
+.profile-avatar:hover {
+    filter: grayscale(0%) contrast(130%);
+    border-color: #cb7b42;
+    box-shadow: 0 0 10px #cb7b42;
+}
+
+.avatar-placeholder {
+    width: 150px;
+    height: 150px;
+    background: linear-gradient(135deg, #1a1510, #0a0806);
+    border: 3px solid #5c3a28;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.avatar-icon {
+    font-size: 4rem;
+    animation: avatarPulse 2s ease-in-out infinite;
+}
+
+@keyframes avatarPulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 0.7;
+    }
+    50% {
+        transform: scale(1.05);
+        opacity: 1;
+        text-shadow: 0 0 5px #cb7b42;
+    }
+}
+
+.avatar-border {
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    border: 1px solid #cb7b42;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.avatar-container:hover .avatar-border {
+    opacity: 0.5;
+}
+
+/* Имя пользователя */
+.profile-username {
+    font-size: 1.8rem;
+    letter-spacing: 2px;
+    color: #e7caa4;
+    margin: 1rem 0 0.5rem;
+    font-family: 'Courier New', monospace;
+    text-transform: uppercase;
+    word-break: break-word;
+}
+
+/* Мета информация */
+.profile-meta {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 0.5rem;
+}
+
+.meta-item {
+    font-size: 0.7rem;
+    color: #8a6548;
+    font-family: monospace;
+    letter-spacing: 1px;
+}
+
+/* Описание профиля */
+.profile-description {
+    margin: 1.5rem 0;
+    background: #0a0806;
+    border-left: 4px solid #cb7b42;
+    padding: 1rem;
+}
+
+.description-header {
+    font-size: 0.7rem;
+    letter-spacing: 2px;
+    color: #cb7b42;
+    margin-bottom: 0.5rem;
+    font-family: monospace;
+}
+
+.description-text {
+    color: #d8c9b0;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin: 0;
+    font-family: monospace;
+}
+
+/* Статистика */
+.profile-stats {
+    display: flex;
+    justify-content: space-around;
+    margin: 1.5rem 0;
+    padding: 1rem 0;
+    border-top: 1px solid #2a221c;
+    border-bottom: 1px solid #2a221c;
+}
+
+.stat-block {
+    text-align: center;
+}
+
+.stat-label {
+    display: block;
+    font-size: 0.65rem;
+    letter-spacing: 2px;
+    color: #8a6548;
+    font-family: monospace;
+    margin-bottom: 0.3rem;
+}
+
+.stat-value {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #cb7b42;
+    font-family: 'Courier New', monospace;
+    text-shadow: 0 0 3px rgba(203, 123, 66, 0.5);
+}
+
+/* Действия с профилем */
+.profile-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.edit-btn, .delete-btn {
+    flex: 1;
+    text-align: center;
+    padding: 0.7rem;
+    font-size: 0.85rem;
+}
+
+.delete-btn {
+    background: #2a1510;
+    border-color: #8a3a2a;
+}
+
+.delete-btn:hover {
+    background: #4a2518;
+    border-color: #c4512c;
+    box-shadow: 0 0 8px #c4512c;
+}
+
+/* Адаптация для мобильных */
+@media (max-width: 680px) {
+    .profile-card {
+        max-width: 95%;
+    }
+
+    .profile-body {
+        padding: 1.5rem;
+    }
+
+    .profile-username {
+        font-size: 1.4rem;
+    }
+
+    .profile-actions {
+        flex-direction: column;
+    }
+
+    .profile-badge {
+        position: static;
+        transform: none;
+        display: inline-block;
+        margin-top: 0.5rem;
+    }
+
+    .profile-header {
+        text-align: center;
+    }
+
+    .profile-meta {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.3rem;
+    }
+}
+
+/* ============================================
+   СТРАНИЦА РЕДАКТИРОВАНИЯ ПРОФИЛЯ
+============================================ */
+
+/* Карточка редактирования */
+.edit-card {
+    max-width: 550px;
+}
+
+/* Секция редактирования аватара */
+.avatar-edit-section {
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.avatar-preview {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 1rem;
+    cursor: pointer;
+}
+
+.edit-avatar {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border: 3px solid #5c3a28;
+    filter: grayscale(20%);
+    transition: all 0.3s ease;
+}
+
+.edit-placeholder {
+    width: 150px;
+    height: 150px;
+    background: linear-gradient(135deg, #1a1510, #0a0806);
+    border: 3px solid #5c3a28;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.avatar-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    cursor: pointer;
+}
+
+.avatar-preview:hover .avatar-overlay {
+    opacity: 1;
+}
+
+.overlay-icon {
+    font-size: 2rem;
+    color: #cb7b42;
+}
+
+.avatar-input-group {
+    margin-top: 0.5rem;
+}
+
+/* Textarea в стиле рулетки */
+.roulette-textarea {
+    background: #0f0e0c;
+    border: 1px solid #5c3f2e;
+    padding: 0.7rem 1rem;
+    color: #eedbba;
+    font-family: monospace;
+    font-size: 0.9rem;
+    width: 100%;
+    outline: none;
+    transition: 0.15s;
+    resize: vertical;
+    box-sizing: border-box;
+}
+
+.roulette-textarea:focus {
+    border-color: #bc8260;
+    box-shadow: 0 0 5px #9b623f;
+}
+
+.roulette-textarea::placeholder {
+    color: #4a3a2a;
+    font-family: monospace;
+    font-size: 0.8rem;
+}
+
+/* File input стили */
+.roulette-file-input {
+    background: #0f0e0c;
+    border: 1px solid #5c3f2e;
+    padding: 0.5rem;
+    color: #eedbba;
+    font-family: monospace;
+    font-size: 0.85rem;
+    width: 100%;
+    cursor: pointer;
+}
+
+.roulette-file-input::-webkit-file-upload-button {
+    background: #5c3a28;
+    border: 1px solid #ab784c;
+    color: #f2e1c0;
+    padding: 0.4rem 1rem;
+    font-family: monospace;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.roulette-file-input::-webkit-file-upload-button:hover {
+    background: #7a5038;
+    border-color: #e0b17a;
+}
+
+/* Кнопки действий */
+.edit-actions {
+    margin-top: 2rem;
+    gap: 1rem;
+}
+
+.cancel-btn, .save-btn {
+    flex: 1;
+    text-align: center;
+    padding: 0.7rem;
+    font-size: 0.85rem;
+}
+
+.cancel-btn {
+    background: transparent;
+    border: 1.5px solid #7a5a4a;
+    color: #d8c9b0;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.cancel-btn:hover {
+    background: #7a5a4a;
+    color: #0a0c0f;
+    border-color: #c99a6a;
+    box-shadow: 0 0 6px #aa794e;
+}
+
+.save-btn {
+    background: #5c3a28;
+    border: 1px solid #ab784c;
+    color: #f2e1c0;
+}
+
+.save-btn:hover {
+    background: #7a5038;
+    border-color: #e0b17a;
+    box-shadow: 0 0 8px #b87a48;
+    letter-spacing: 4px;
+}
+
+/* Адаптация для мобильных */
+@media (max-width: 680px) {
+    .edit-actions {
+        flex-direction: column;
+    }
+
+    .edit-avatar, .edit-placeholder {
+        width: 120px;
+        height: 120px;
+    }
+
+    .profile-body {
+        padding: 1.5rem;
+    }
+}
+
+/* ============================================
+   СТРАНИЦА УДАЛЕНИЯ ПРОФИЛЯ - BUCKSHOT STYLE
+============================================ */
+
+/* Карточка удаления */
+.delete-card {
+    max-width: 550px;
+    border-color: #8a3a2a;
+    animation: deleteGlow 2s ease-in-out infinite;
+}
+
+@keyframes deleteGlow {
+    0%, 100% {
+        box-shadow: 12px 12px 0 rgba(0, 0, 0, 0.5);
+        border-color: #8a3a2a;
+    }
+    50% {
+        box-shadow: 12px 12px 0 rgba(0, 0, 0, 0.5), 0 0 15px rgba(196, 81, 44, 0.3);
+        border-color: #c4512c;
+    }
+}
+
+.delete-header {
+    background: #1a0a05;
+    border-bottom-color: #c4512c;
+}
+
+.delete-header h3 {
+    color: #e6a07a;
+    text-shadow: 0 0 5px #c4512c;
+}
+
+.profile-badge.danger {
+    background: #2a0a05;
+    border-color: #c4512c;
+    color: #e6a07a;
+    animation: badgeBlink 1s ease-in-out infinite;
+}
+
+@keyframes badgeBlink {
+    0%, 100% {
+        opacity: 0.7;
+    }
+    50% {
+        opacity: 1;
+        text-shadow: 0 0 3px #c4512c;
+    }
+}
+
+/* Тело удаления */
+.delete-body {
+    background: #0a0605;
+}
+
+.delete-warning {
+    text-align: center;
+}
+
+/* Анимированный череп */
+.warning-skull {
+    font-size: 5rem;
+    animation: skullShake 0.5s ease-in-out infinite;
+    margin-bottom: 0.5rem;
+    display: inline-block;
+}
+
+@keyframes skullShake {
+    0%, 100% {
+        transform: translateX(0) rotate(0deg);
+    }
+    25% {
+        transform: translateX(-3px) rotate(-5deg);
+    }
+    75% {
+        transform: translateX(3px) rotate(5deg);
+    }
+}
+
+.delete-warning h4 {
+    font-size: 1.6rem;
+    letter-spacing: 3px;
+    color: #e6a07a;
+    margin-bottom: 1rem;
+    font-family: 'Courier New', monospace;
+    text-shadow: 0 0 5px #c4512c;
+}
+
+/* Сообщение предупреждения */
+.warning-message {
+    background: #0a0503;
+    border-left: 4px solid #c4512c;
+    border-right: 4px solid #c4512c;
+    padding: 1.2rem;
+    margin: 1.5rem 0;
+}
+
+.warning-message p {
+    margin: 0 0 1rem 0;
+    color: #d8c9b0;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.warning-message strong {
+    color: #e6a07a;
+    text-transform: uppercase;
+}
+
+.warning-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 0.8rem;
+}
+
+.warning-list span {
+    font-size: 0.8rem;
+    color: #c9a06a;
+    text-align: left;
+    font-family: monospace;
+}
+
+/* Пульсирующее предупреждение */
+.warning-pulse {
+    margin: 1.5rem 0;
+    padding: 0.8rem;
+    background: #1a0a05;
+    border: 1px solid #c4512c;
+    animation: pulseWarning 1.2s ease-in-out infinite;
+}
+
+.pulse-text {
+    font-size: 0.7rem;
+    letter-spacing: 2px;
+    color: #e6a07a;
+    font-family: monospace;
+    text-transform: uppercase;
+}
+
+@keyframes pulseWarning {
+    0%, 100% {
+        background: #1a0a05;
+        border-color: #c4512c;
+        box-shadow: 0 0 0px rgba(196, 81, 44, 0);
+    }
+    50% {
+        background: #2a1008;
+        border-color: #e66030;
+        box-shadow: 0 0 10px rgba(196, 81, 44, 0.5);
+    }
+}
+
+/* Кнопки действий */
+.delete-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.cancel-delete, .confirm-delete {
+    flex: 1;
+    text-align: center;
+    padding: 0.8rem;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.cancel-delete {
+    background: transparent;
+    border: 1.5px solid #7a5a4a;
+    color: #d8c9b0;
+    text-decoration: none;
+}
+
+.cancel-delete:hover {
+    background: #7a5a4a;
+    color: #0a0c0f;
+    border-color: #c99a6a;
+    box-shadow: 0 0 6px #aa794e;
+}
+
+.confirm-delete {
+    background: #2a1510;
+    border: 1.5px solid #c4512c;
+    color: #e6a07a;
+}
+
+.confirm-delete:hover {
+    background: #4a2518;
+    border-color: #e69055;
+    color: #fff0da;
+    box-shadow: 0 0 12px #c4512c;
+    letter-spacing: 3px;
+}
+
+/* Адаптация для мобильных */
+@media (max-width: 680px) {
+    .delete-card {
+        max-width: 95%;
+    }
+
+    .delete-actions {
+        flex-direction: column;
+    }
+
+    .warning-skull {
+        font-size: 4rem;
+    }
+
+    .delete-warning h4 {
+        font-size: 1.3rem;
+    }
+
+    .warning-message p {
+        font-size: 0.8rem;
+    }
+
+    .warning-list span {
+        font-size: 0.7rem;
+    }
+}

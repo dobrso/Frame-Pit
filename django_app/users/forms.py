@@ -18,10 +18,27 @@ class RegisterForm(UserCreationForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields['email'].widget.attrs.update({'class': 'form-control'})
-        self.fields['username'].widget.attrs.update({'class': 'form-control'})
-        self.fields['password1'].widget.attrs.update({'class': 'form-control'})
-        self.fields['password2'].widget.attrs.update({'class': 'form-control'})
+
+        # Кастомные атрибуты для полей
+        self.fields['username'].widget.attrs.update({
+            'class': 'roulette-input',
+            'autofocus': 'autofocus'
+        })
+
+        self.fields['email'].widget.attrs.update({
+            'class': 'roulette-input',
+            'autocomplete': 'email'
+        })
+
+        self.fields['password1'].widget.attrs.update({
+            'class': 'roulette-input',
+            'autocomplete': 'new-password'
+        })
+
+        self.fields['password2'].widget.attrs.update({
+            'class': 'roulette-input',
+            'autocomplete': 'new-password'
+        })
 
     def clean_email(self):
         email = self.cleaned_data['email']
@@ -32,25 +49,67 @@ class RegisterForm(UserCreationForm):
 class LoginForm(AuthenticationForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields['username'].widget.attrs.update({'class': 'form-control'})
-        self.fields['password'].widget.attrs.update({'class': 'form-control'})
+        self.fields['username'].widget.attrs.update({
+            'class': 'roulette-input',
+            'autocomplete': 'username'
+        })
+        self.fields['password'].widget.attrs.update({
+            'class': 'roulette-input',
+            'autocomplete': 'current-password'
+        })
+
 
 class ProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
         fields = ['description', 'image']
         widgets = {
-            'description': forms.Textarea(attrs={'class': 'form-control', 'rows': 4}),
-            'image': forms.FileInput(attrs={'class': 'form-control'}),
+            'description': forms.Textarea(attrs={
+                'class': 'roulette-textarea',
+                'rows': 5,
+                'placeholder': 'ВВЕДИТЕ ИНФОРМАЦИЮ О СЕБЕ...\nВАШИ НАВЫКИ, ПРЕДПОЧТЕНИЯ, ОПЫТ...'
+            }),
+            'image': forms.FileInput(attrs={
+                'class': 'roulette-file-input',
+                'accept': 'image/*'
+            }),
         }
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        # Кастомные атрибуты для полей
+        self.fields['description'].widget.attrs.update({
+            'class': 'roulette-textarea',
+        })
+
+        self.fields['image'].widget.attrs.update({
+            'class': 'roulette-file-input',
+        })
 
 class CustomPasswordResetForm(PasswordResetForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields['email'].widget.attrs.update({'class': 'form-control'})
+
+        # Кастомные атрибуты для поля email
+        self.fields['email'].widget.attrs.update({
+            'class': 'roulette-input',
+            'autocomplete': 'email',
+            'autofocus': 'autofocus'
+        })
 
 class CustomSetPasswordForm(SetPasswordForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields['new_password1'].widget.attrs.update({'class': 'form-control'})
-        self.fields['new_password2'].widget.attrs.update({'class': 'form-control'})
+
+        # Заменяем Bootstrap классы на кастомные для Buckshot стиля
+        self.fields['new_password1'].widget.attrs.update({
+            'class': 'roulette-input',
+            'autocomplete': 'new-password',
+            'autofocus': 'autofocus'
+        })
+
+        self.fields['new_password2'].widget.attrs.update({
+            'class': 'roulette-input',
+            'autocomplete': 'new-password'
+        })

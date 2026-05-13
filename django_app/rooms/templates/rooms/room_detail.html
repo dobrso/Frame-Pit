@@ -11,10 +11,10 @@
             <div class="card shadow-sm mb-3">
                 <div class="card-body">
                     <div class="d-flex justify-content-between align-items-start mb-3">
-                        <h4 class="card-title mb-0">{{ room.name }}</h4>
                         <a href="{% url 'rooms:room_leave' room.id %}" class="btn btn-outline-danger btn-sm">
                             Выйти
                         </a>
+                        <h4 class="card-title mb-0">{{ room.name }}</h4>
                     </div>
 
                     {% if room.image %}

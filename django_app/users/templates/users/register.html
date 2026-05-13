@@ -1,80 +1,94 @@
 {% extends 'base.html' %}
 
 {% block title %}
-    Регистрация
+    Регистрация — Frame Pit
 {% endblock %}
 
 {% block content %}
-<div class="container mt-5">
-    <div class="row justify-content-center">
-        <div class="col-md-5">
-            <div class="card shadow-sm">
-                <div class="card-header bg-primary text-white text-center">
-                    <h3 class="mb-0">Регистрация</h3>
-                </div>
-                <div class="card-body">
-                    <form method="post">
-                        {% csrf_token %}
+<div class="login-wrapper">
+    <div class="login-card">
+        <div class="login-header">
+            <h3>РЕГИСТРАЦИЯ</h3>
+        </div>
 
-                        <!-- Имя пользователя -->
-                        <div class="mb-3">
-                            <label for="{{ form.username.id_for_label }}" class="form-label">
-                                Имя пользователя
-                            </label>
-                            {{ form.username }}
-                            {% if form.username.help_text %}
-                                <small class="text-muted d-block mt-1">{{ form.username.help_text }}</small>
-                            {% endif %}
+        <div class="login-body">
+            <form method="post">
+                {% csrf_token %}
+
+                <!-- Имя пользователя -->
+                <div class="input-group-login">
+                    <label for="{{ form.username.id_for_label }}" class="login-label">
+                        ИМЯ ПОЛЬЗОВАТЕЛЯ
+                    </label>
+                    {{ form.username }}
+                    {% if form.username.help_text %}
+                        <small class="help-text">{{ form.username.help_text|safe }}</small>
+                    {% endif %}
+                    {% if form.username.errors %}
+                        <div class="error-list">
                             {% for error in form.username.errors %}
-                                <div class="alert alert-danger mt-1 py-1">{{ error }}</div>
+                                <div class="error-message">{{ error }}</div>
                             {% endfor %}
                         </div>
+                    {% endif %}
+                </div>
 
-                        <!-- Email -->
-                        <div class="mb-3">
-                            <label for="{{ form.email.id_for_label }}" class="form-label">
-                                Email
-                            </label>
-                            {{ form.email }}
+                <!-- Email -->
+                <div class="input-group-login">
+                    <label for="{{ form.email.id_for_label }}" class="login-label">
+                        EMAIL
+                    </label>
+                    {{ form.email }}
+                    {% if form.email.errors %}
+                        <div class="error-list">
                             {% for error in form.email.errors %}
-                                <div class="alert alert-danger mt-1 py-1">{{ error }}</div>
+                                <div class="error-message">{{ error }}</div>
                             {% endfor %}
                         </div>
+                    {% endif %}
+                </div>
 
-                        <!-- Пароль -->
-                        <div class="mb-3">
-                            <label for="{{ form.password1.id_for_label }}" class="form-label">
-                                Пароль
-                            </label>
-                            {{ form.password1 }}
-                            {% if form.password1.help_text %}
-                                <small class="text-muted d-block mt-1">{{ form.password1.help_text }}</small>
-                            {% endif %}
+                <!-- Пароль -->
+                <div class="input-group-login">
+                    <label for="{{ form.password1.id_for_label }}" class="login-label">
+                        ПАРОЛЬ
+                    </label>
+                    {{ form.password1 }}
+                    {% if form.password1.help_text %}
+                        <small class="help-text">{{ form.password1.help_text|safe }}</small>
+                    {% endif %}
+                    {% if form.password1.errors %}
+                        <div class="error-list">
                             {% for error in form.password1.errors %}
-                                <div class="alert alert-danger mt-1 py-1">{{ error }}</div>
+                                <div class="error-message">{{ error }}</div>
                             {% endfor %}
                         </div>
+                    {% endif %}
+                </div>
 
-                        <!-- Подтверждение пароля -->
-                        <div class="mb-3">
-                            <label for="{{ form.password2.id_for_label }}" class="form-label">
-                                Подтверждение пароля
-                            </label>
-                            {{ form.password2 }}
+                <!-- Подтверждение пароля -->
+                <div class="input-group-login">
+                    <label for="{{ form.password2.id_for_label }}" class="login-label">
+                        ПОДТВЕРЖДЕНИЕ ПАРОЛЯ
+                    </label>
+                    {{ form.password2 }}
+                    {% if form.password2.errors %}
+                        <div class="error-list">
                             {% for error in form.password2.errors %}
-                                <div class="alert alert-danger mt-1 py-1">{{ error }}</div>
+                                <div class="error-message">{{ error }}</div>
                             {% endfor %}
                         </div>
+                    {% endif %}
+                </div>
 
-                        <button type="submit" class="btn btn-primary w-100">
-                            Зарегистрироваться
-                        </button>
-                    </form>
-                </div>
-                <div class="card-footer text-center bg-white">
-                    Уже есть аккаунт? <a href="{% url 'users:login' %}" class="text-decoration-none">Войти</a>
-                </div>
-            </div>
+                <button type="submit" class="btn-solid-roulette">
+                    ЗАРЕГИСТРИРОВАТЬСЯ
+                </button>
+            </form>
+        </div>
+
+        <div class="login-footer">
+            <p>Уже есть аккаунт? <a href="{% url 'users:login' %}">ВОЙТИ</a></p>
         </div>
     </div>
 </div>

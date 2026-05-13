@@ -11,7 +11,8 @@ from .serializers import ProfileSerializer
 )
 class ProfileAPIView(generics.RetrieveAPIView):
     '''
-    Эндпоинт для получения профиля текущего пользователя. Требуется авторизация
+    Эндпоинт для получения профиля текущего пользователя
+    Требуется авторизация
     '''
 
     serializer_class = ProfileSerializer

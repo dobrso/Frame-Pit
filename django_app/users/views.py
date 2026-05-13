@@ -19,7 +19,8 @@ class RegisterView(CreateView):
 
 class ProfileDetailView(LoginRequiredMixin, DetailView):
     '''
-    Отображает страницу с профилем пользователя. Требуется авторизация
+    Отображает страницу с профилем пользователя
+    Требуется авторизация
     '''
 
     model = Profile
@@ -31,7 +32,8 @@ class ProfileDetailView(LoginRequiredMixin, DetailView):
 
 class ProfileUpdateView(LoginRequiredMixin, UpdateView):
     '''
-    Отображает страницу с формой для обновления данных профиля. Требуется авторизация
+    Отображает страницу с формой для обновления данных профиля
+    Требуется авторизация
     '''
 
     model = Profile
@@ -47,8 +49,9 @@ class ProfileUpdateView(LoginRequiredMixin, UpdateView):
 
 class ProfileDeleteView(LoginRequiredMixin, DeleteView):
     '''
-    Отображает страницу с формой для удаления пользователя. Вместо того чтобы удалять профиль, удаляется
-    пользователь, а с ним и профиль (Cascade). Требуется авторизация
+    Отображает страницу с формой для удаления пользователя
+    Вместо того чтобы удалить профиль, удаляется пользователь, а с ним и профиль (Cascade)
+    Требуется авторизация
     '''
 
     model = User

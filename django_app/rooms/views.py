@@ -17,7 +17,8 @@ class RoomsListView(ListView):
 
 class RoomCreateView(LoginRequiredMixin, CreateView):
     '''
-    Отображает страницу с формой создания комнаты. Требуется авторизация
+    Отображает страницу с формой создания комнаты
+    Требуется авторизация
     '''
 
     model = Room
@@ -66,7 +67,8 @@ class RoomCreateView(LoginRequiredMixin, CreateView):
 
 class RoomDetailView(LoginRequiredMixin, DetailView):
     '''
-    Отображает страницу с комнатой. Требуется авторизация
+    Отображает страницу с комнатой
+    Требуется авторизация
     '''
 
     model = Room
@@ -78,7 +80,8 @@ class RoomDetailView(LoginRequiredMixin, DetailView):
 
 class RoomUpdateView(LoginRequiredMixin, UpdateView):
     '''
-    Отображает страницу с формой для обновления данных комнаты. Требуется авторизация
+    Отображает страницу с формой для обновления данных комнаты
+    Требуется авторизация
     '''
 
     model = Room
@@ -94,7 +97,8 @@ class RoomUpdateView(LoginRequiredMixin, UpdateView):
 
 class RoomDeleteView(LoginRequiredMixin, DeleteView):
     '''
-    Отображает страницу с формой удаления комнаты. Требуется авторизация
+    Отображает страницу с формой удаления комнаты
+    Требуется авторизация
     '''
 
     model = Room
@@ -109,7 +113,8 @@ class RoomDeleteView(LoginRequiredMixin, DeleteView):
 
 class RoomJoinView(LoginRequiredMixin, RedirectView):
     '''
-    Перенаправляет пользователя на страницу с комнатой, тем самым добавляет его в список участников. Требуется авторизация
+    Перенаправляет пользователя на страницу с комнатой, тем самым добавляет его в список участников
+    Требуется авторизация
     '''
 
     def get_redirect_url(self, *args, **kwargs):
@@ -120,7 +125,8 @@ class RoomJoinView(LoginRequiredMixin, RedirectView):
 
 class RoomLeaveView(LoginRequiredMixin, RedirectView):
     '''
-    Перенаправляет пользователя со страницы комнаты, тем самым удаляет его из списка участников. Требуется авторизация
+    Перенаправляет пользователя со страницы комнаты, тем самым удаляет его из списка участников
+    Требуется авторизация
     '''
 
     def get_redirect_url(self, *args, **kwargs):

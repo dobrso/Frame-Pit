@@ -1,46 +1,59 @@
 {% extends 'base.html' %}
 
 {% block title %}
-    Список комнат
+    Список комнат — Frame Pit
 {% endblock %}
 
 {% block content %}
-    <div class="d-flex justify-content-between align-items-center mb-4">
-        <h2>Список комнат</h2>
-        <a href="{% url 'rooms:room_create' %}" class="btn btn-success">
-            Создать комнату
+<div class="rooms-wrapper">
+    <div class="rooms-header">
+        <div class="header-left">
+            <h2>СПИСОК КОМНАТ</h2>
+            <div class="rooms-count">{{ rooms|length }} АКТИВНЫХ</div>
+        </div>
+        <a href="{% url 'rooms:room_create' %}" class="btn-solid-roulette create-btn">
+            СОЗДАТЬ КОМНАТУ
         </a>
     </div>
 
     {% if rooms %}
-        <div class="row">
+        <div class="rooms-grid">
             {% for room in rooms %}
-                <div class="col-md-4 mb-4">
-                    <a href="{% url 'rooms:room_join' room.id %}" class="text-decoration-none">
-                        <div class="card h-100 shadow-sm">
+                <a href="{% url 'rooms:room_join' room.id %}" class="room-card-link">
+                    <div class="room-card">
+                        <div class="room-card-image">
                             {% if room.image %}
-                                <img src="{{ room.image.url }}" class="card-img-top" alt="{{ room.name }}" style="height: 350px; object-fit: cover;">
+                                <img src="{{ room.image.url }}" alt="{{ room.name }}" class="room-image">
                             {% else %}
-                                <div class="bg-secondary text-white d-flex align-items-center justify-content-center" style="height: 200px;">
-                                    <span>Нет изображения</span>
+                                <div class="room-image-placeholder">
+                                    <span class="placeholder-icon">🎲</span>
+                                    <span class="placeholder-text">БЕЗ ИЗОБРАЖЕНИЯ</span>
                                 </div>
                             {% endif %}
-                            <div class="card-body">
-                                <h5 class="card-title text-dark">{{ room.name }}</h5>
-                                <div class="d-flex justify-content-between align-items-center mt-2">
-                                    <span class="badge bg-primary">
-                                        👥 {{ room.get_room_members_count }}
-                                    </span>
+                            <div class="room-overlay">
+                                <span class="overlay-text">ВОЙТИ</span>
+                            </div>
+                        </div>
+                        <div class="room-card-body">
+                            <h5 class="room-title">{{ room.name }}</h5>
+                            <div class="room-stats">
+                                <div class="stat">
+                                    <span class="stat-icon">👥</span>
+                                    <span class="stat-value">{{ room.get_room_members_count }}</span>
                                 </div>
                             </div>
                         </div>
-                    </a>
-                </div>
+                    </div>
+                </a>
             {% endfor %}
         </div>
     {% else %}
-        <div class="alert alert-info text-center">
-            Пока нет комнат. Создайте первую комнату!
+        <div class="empty-state">
+            <p>Пока нет активных комнат.<br>Создайте первую комнату!</p>
+            <a href="{% url 'rooms:room_create' %}" class="btn-solid-roulette empty-create-btn">
+                СОЗДАТЬ ПЕРВУЮ КОМНАТУ
+            </a>
         </div>
     {% endif %}
+</div>
 {% endblock %}

@@ -1732,3 +1732,1084 @@ label {
         font-size: 0.7rem;
     }
 }
+
+/* ============================================
+   СПИСОК КОМНАТ - BUCKSHOT ROULETTE STYLE
+============================================ */
+
+/* Основной контейнер */
+.rooms-wrapper {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 1rem 1.5rem 3rem 1.5rem;
+}
+
+/* Заголовок списка комнат */
+.rooms-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #3a2c22;
+}
+
+.header-left h2 {
+    font-size: 1.8rem;
+    letter-spacing: 4px;
+    color: #e7caa4;
+    font-family: 'Courier New', monospace;
+    margin: 0 0 0.3rem 0;
+    text-transform: uppercase;
+    text-shadow: 0 0 3px #cb7b42;
+}
+
+.rooms-count {
+    font-size: 0.75rem;
+    color: #8a6548;
+    font-family: monospace;
+    letter-spacing: 1px;
+}
+
+.create-btn {
+    padding: 0.6rem 1.5rem;
+    font-size: 0.9rem;
+    display: inline-block;
+    text-decoration: none;
+}
+
+/* Сетка комнат */
+.rooms-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 2rem;
+}
+
+/* Ссылка-обертка для комнаты */
+.room-card-link {
+    text-decoration: none;
+    transition: transform 0.2s ease;
+    display: block;
+}
+
+.room-card-link:hover {
+    transform: translateY(-5px);
+}
+
+/* Карточка комнаты */
+.room-card {
+    background: #0c0e0a;
+    border: 1px solid #3a2c22;
+    box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.4);
+    transition: all 0.2s ease;
+    overflow: hidden;
+}
+
+.room-card:hover {
+    box-shadow: 12px 12px 0 rgba(0, 0, 0, 0.5);
+    border-color: #cb7b42;
+}
+
+/* Изображение комнаты */
+.room-card-image {
+    position: relative;
+    height: 220px;
+    overflow: hidden;
+    background: #0a0806;
+}
+
+.room-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+    filter: grayscale(30%) contrast(110%);
+}
+
+.room-card:hover .room-image {
+    transform: scale(1.05);
+    filter: grayscale(0%) contrast(120%);
+}
+
+/* Плейсхолдер для отсутствующего изображения */
+.room-image-placeholder {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #1a1510, #0a0806);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.placeholder-icon {
+    font-size: 3rem;
+    opacity: 0.5;
+    animation: diceRoll 2s ease-in-out infinite;
+}
+
+@keyframes diceRoll {
+    0%, 100% {
+        transform: rotate(0deg);
+        opacity: 0.3;
+    }
+    50% {
+        transform: rotate(10deg);
+        opacity: 0.7;
+    }
+}
+
+.placeholder-text {
+    font-size: 0.7rem;
+    color: #6a4f38;
+    font-family: monospace;
+    letter-spacing: 2px;
+}
+
+/* Оверлей при наведении */
+.room-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.room-card:hover .room-overlay {
+    opacity: 1;
+}
+
+.overlay-text {
+    color: #cb7b42;
+    font-family: monospace;
+    font-size: 1.2rem;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    border: 2px solid #cb7b42;
+    padding: 0.5rem 1.2rem;
+    background: rgba(0, 0, 0, 0.7);
+}
+
+/* Тело карточки */
+.room-card-body {
+    padding: 1.2rem;
+}
+
+.room-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #e7caa4;
+    margin: 0 0 0.8rem 0;
+    font-family: 'Courier New', monospace;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    word-break: break-word;
+}
+
+.room-stats {
+    display: flex;
+    gap: 1.5rem;
+    border-top: 1px solid #2a221c;
+    padding-top: 0.8rem;
+}
+
+.stat {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.stat-icon {
+    font-size: 0.9rem;
+}
+
+.stat-value {
+    font-size: 0.75rem;
+    color: #bfa07e;
+    font-family: monospace;
+}
+
+/* Пустое состояние */
+.empty-state {
+    text-align: center;
+    padding: 4rem 2rem;
+    background: #0c0e0a;
+    border: 2px dashed #3a2c22;
+    margin: 2rem 0;
+}
+
+.empty-icon {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    animation: emptyPulse 2s ease-in-out infinite;
+    display: inline-block;
+}
+
+@keyframes emptyPulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 0.5;
+    }
+    50% {
+        transform: scale(1.1);
+        opacity: 1;
+    }
+}
+
+.empty-state h3 {
+    font-size: 1.5rem;
+    letter-spacing: 4px;
+    color: #8a6548;
+    margin-bottom: 1rem;
+    font-family: 'Courier New', monospace;
+}
+
+.empty-state p {
+    color: #9a7a58;
+    margin-bottom: 1.5rem;
+    font-family: monospace;
+    line-height: 1.5;
+}
+
+.empty-create-btn {
+    display: inline-block;
+    padding: 0.7rem 2rem;
+    text-decoration: none;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .rooms-wrapper {
+        padding: 1rem 1rem 2rem 1rem;
+    }
+
+    .rooms-header {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 1rem;
+    }
+
+    .header-left h2 {
+        font-size: 1.5rem;
+    }
+
+    .create-btn {
+        text-align: center;
+    }
+
+    .rooms-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .room-card-image {
+        height: 200px;
+    }
+
+    .room-title {
+        font-size: 1rem;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .rooms-grid {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 1.5rem;
+    }
+}
+
+/* ============================================
+   СТРАНИЦА СОЗДАНИЯ КОМНАТЫ
+============================================ */
+
+/* Контейнер формы */
+.room-form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 180px);
+    padding: 2rem 1rem;
+}
+
+/* Карточка формы */
+.room-form-card {
+    max-width: 600px;
+    width: 100%;
+    background: #0c0e0a;
+    border: 1px solid #3a2c22;
+    box-shadow: 12px 12px 0 rgba(0, 0, 0, 0.5);
+    position: relative;
+    overflow: hidden;
+}
+
+.room-form-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #5c3a28, #cb7b42, #5c3a28);
+    animation: holsterGlow 2s ease-in-out infinite;
+}
+
+/* Действия формы */
+.form-actions {
+    margin-top: 2rem;
+    gap: 1rem;
+}
+
+/* Контейнер для тэгов */
+.tags-container {
+    background: #0f0e0c;
+    border: 1px solid #5c3f2e;
+    padding: 1rem;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+/* Стили для чекбоксов тэгов */
+.roulette-checkbox-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+}
+
+.roulette-checkbox-group div {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.roulette-checkbox-group input[type="checkbox"] {
+    width: auto;
+    margin: 0;
+    accent-color: #cb7b42;
+    cursor: pointer;
+}
+
+.roulette-checkbox-group label {
+    margin: 0;
+    font-size: 0.85rem;
+    color: #d8c9b0;
+    cursor: pointer;
+    font-family: monospace;
+    letter-spacing: 1px;
+}
+
+.roulette-checkbox-group label:hover {
+    color: #f0dbb2;
+    text-shadow: 0 0 2px #cb7b42;
+}
+
+/* Кастомизация скроллбара для контейнера тэгов */
+.tags-container::-webkit-scrollbar {
+    width: 6px;
+}
+
+.tags-container::-webkit-scrollbar-track {
+    background: #1e1a17;
+}
+
+.tags-container::-webkit-scrollbar-thumb {
+    background: #7a5a4a;
+    border-radius: 0px;
+}
+
+.tags-container::-webkit-scrollbar-thumb:hover {
+    background: #a67452;
+}
+
+/* Кнопка создания комнаты */
+.save-btn {
+    background: #5c3a28;
+    border: 1px solid #ab784c;
+    color: #f2e1c0;
+}
+
+.save-btn:hover {
+    background: #7a5038;
+    border-color: #e0b17a;
+    box-shadow: 0 0 8px #b87a48;
+    letter-spacing: 4px;
+}
+
+/* Адаптация для мобильных */
+@media (max-width: 680px) {
+    .room-form-card {
+        max-width: 95%;
+    }
+
+    .form-actions {
+        flex-direction: column;
+    }
+
+    .tags-container {
+        max-height: 150px;
+    }
+
+    .roulette-checkbox-group {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+}
+
+/* ============================================
+   СТРАНИЦА КОМНАТЫ - BUCKSHOT ROULETTE STYLE
+============================================ */
+
+/* Основной контейнер */
+.room-detail-wrapper {
+    padding: 1rem;
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+/* Сетка комнаты */
+.room-grid {
+    display: grid;
+    grid-template-columns: 380px 1fr;
+    gap: 1.5rem;
+}
+
+/* Левая панель */
+.room-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* Карточка информации о комнате */
+.room-info-card {
+    background: #0c0e0a;
+    border: 1px solid #3a2c22;
+    box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.4);
+    padding: 1.2rem;
+}
+
+.room-info-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+}
+
+.leave-btn {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.75rem;
+    text-decoration: none;
+}
+
+.room-name {
+    font-size: 1.3rem;
+    letter-spacing: 2px;
+    color: #e7caa4;
+    margin: 0;
+    font-family: 'Courier New', monospace;
+    word-break: break-word;
+}
+
+/* Изображение комнаты */
+.room-image-container {
+    position: relative;
+    margin: 1rem 0;
+    overflow: hidden;
+}
+
+.room-detail-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    filter: grayscale(20%) contrast(110%);
+    border: 1px solid #5c3a28;
+}
+
+.image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(0,0,0,0.3), rgba(0,0,0,0.6));
+    pointer-events: none;
+}
+
+/* Тэги */
+.room-tags {
+    margin: 1rem 0;
+}
+
+.tags-label {
+    font-size: 0.7rem;
+    color: #8a6548;
+    font-family: monospace;
+    letter-spacing: 1px;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.tags-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.tag-badge {
+    background: #1a1510;
+    border: 1px solid #5c3a28;
+    padding: 0.2rem 0.6rem;
+    font-size: 0.7rem;
+    color: #bfa07e;
+    font-family: monospace;
+    letter-spacing: 1px;
+}
+
+/* Действия владельца */
+.room-owner-actions {
+    display: flex;
+    gap: 0.8rem;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid #2a221c;
+}
+
+.edit-room-btn, .delete-room-btn {
+    flex: 1;
+    text-align: center;
+    padding: 0.5rem;
+    font-size: 0.8rem;
+    text-decoration: none;
+}
+
+/* Карточка чата */
+.chat-card {
+    background: #0c0e0a;
+    border: 1px solid #3a2c22;
+    box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.4);
+    display: flex;
+    flex-direction: column;
+    height: 500px;
+}
+
+.chat-header {
+    background: #050705;
+    border-bottom: 2px solid #5c3e2e;
+    padding: 0.8rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+}
+
+.chat-icon {
+    font-size: 1.2rem;
+}
+
+.chat-title {
+    flex: 1;
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    color: #e7caa4;
+    margin: 0;
+    font-family: monospace;
+}
+
+.chat-status {
+    font-size: 0.7rem;
+    color: #8ab86a;
+    font-family: monospace;
+    animation: statusBlink 1.5s ease-in-out infinite;
+}
+
+@keyframes statusBlink {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; text-shadow: 0 0 3px #8ab86a; }
+}
+
+/* Сообщения чата */
+.chat-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1rem;
+    background: #0a0806;
+}
+
+.message-center {
+    text-align: center;
+    padding: 2rem;
+}
+
+.message-icon {
+    font-size: 3rem;
+    animation: messagePulse 2s ease-in-out infinite;
+    display: inline-block;
+}
+
+@keyframes messagePulse {
+    0%, 100% { transform: scale(1); opacity: 0.5; }
+    50% { transform: scale(1.1); opacity: 1; }
+}
+
+.message-placeholder {
+    font-size: 0.85rem;
+    color: #8a6548;
+    margin: 1rem 0;
+    font-family: monospace;
+    line-height: 1.5;
+}
+
+.loading-dots {
+    display: flex;
+    justify-content: center;
+    gap: 0.3rem;
+}
+
+.loading-dots span {
+    font-size: 1.5rem;
+    color: #cb7b42;
+    animation: dotBlink 1.4s ease-in-out infinite;
+}
+
+.loading-dots span:nth-child(1) { animation-delay: 0s; }
+.loading-dots span:nth-child(2) { animation-delay: 0.2s; }
+.loading-dots span:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes dotBlink {
+    0%, 100% { opacity: 0.2; }
+    50% { opacity: 1; }
+}
+
+/* Ввод чата */
+.chat-input-container {
+    display: flex;
+    gap: 0.5rem;
+    padding: 0.8rem;
+    border-top: 1px solid #2a221c;
+    background: #050705;
+}
+
+.chat-input {
+    flex: 1;
+    background: #0f0e0c;
+    border: 1px solid #5c3f2e;
+    padding: 0.6rem;
+    color: #eedbba;
+    font-family: monospace;
+    font-size: 0.85rem;
+    outline: none;
+}
+
+.chat-input:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.chat-send-btn {
+    background: #5c3a28;
+    border: 1px solid #ab784c;
+    color: #f2e1c0;
+    padding: 0.4rem 1rem;
+    font-family: monospace;
+    font-size: 0.75rem;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.chat-send-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Правая панель видео */
+.video-panel {
+    position: sticky;
+    top: 1rem;
+    height: fit-content;
+}
+
+.video-card {
+    background: #0c0e0a;
+    border: 1px solid #3a2c22;
+    box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.4);
+    overflow: hidden;
+}
+
+.video-header {
+    background: #050705;
+    border-bottom: 2px solid #5c3e2e;
+    padding: 0.8rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+}
+
+.video-icon {
+    font-size: 1.2rem;
+}
+
+.video-title {
+    flex: 1;
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    color: #e7caa4;
+    margin: 0;
+    font-family: monospace;
+}
+
+.video-badge {
+    font-size: 0.65rem;
+    color: #cb7b42;
+    font-family: monospace;
+    border: 1px solid #cb7b42;
+    padding: 0.2rem 0.5rem;
+}
+
+/* Видео контейнер */
+.video-container {
+    aspect-ratio: 16 / 9;
+    background: #010101;
+    position: relative;
+}
+
+.video-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #0a0806, #010101);
+}
+
+.placeholder-animation {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.placeholder-icon {
+    font-size: 2rem;
+    animation: iconBounce 1.5s ease-in-out infinite;
+}
+
+.placeholder-icon:nth-child(1) { animation-delay: 0s; }
+.placeholder-icon:nth-child(2) { animation-delay: 0.3s; }
+.placeholder-icon:nth-child(3) { animation-delay: 0.6s; }
+
+@keyframes iconBounce {
+    0%, 100% { transform: translateY(0); opacity: 0.5; }
+    50% { transform: translateY(-10px); opacity: 1; }
+}
+
+.placeholder-text {
+    font-size: 1rem;
+    color: #6a4f38;
+    font-family: monospace;
+    letter-spacing: 3px;
+}
+
+.placeholder-sub {
+    font-size: 0.7rem;
+    color: #4a3a2a;
+    font-family: monospace;
+    margin-top: 0.5rem;
+}
+
+/* Видео контролы */
+.video-controls {
+    display: flex;
+    gap: 0.5rem;
+    padding: 0.8rem;
+    background: #050705;
+    border-top: 1px solid #2a221c;
+}
+
+.control-btn {
+    flex: 1;
+    background: #1a1510;
+    border: 1px solid #5c3a28;
+    color: #d8c9b0;
+    padding: 0.4rem;
+    font-family: monospace;
+    font-size: 0.7rem;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.control-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.control-btn:hover:not(:disabled) {
+    background: #5c3a28;
+    border-color: #cb7b42;
+}
+
+/* Адаптивность */
+@media (max-width: 1024px) {
+    .room-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .video-panel {
+        position: static;
+    }
+
+    .room-sidebar {
+        order: 2;
+    }
+
+    .video-panel {
+        order: 1;
+    }
+}
+
+@media (max-width: 680px) {
+    .room-detail-wrapper {
+        padding: 0.5rem;
+    }
+
+    .room-info-header {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .room-owner-actions {
+        flex-direction: column;
+    }
+
+    .video-controls {
+        flex-wrap: wrap;
+    }
+
+    .chat-header {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+/* ============================================
+   СТРАНИЦА РЕДАКТИРОВАНИЯ КОМНАТЫ
+============================================ */
+
+/* Заголовок с предупреждением */
+.warning-header {
+    background: #1a1508;
+    border-bottom-color: #c9a06a;
+}
+
+.warning-header h3 {
+    color: #e7caa4;
+    text-shadow: 0 0 3px #c9a06a;
+}
+
+.profile-badge.warning {
+    background: #1a1508;
+    border-color: #c9a06a;
+    color: #e7caa4;
+}
+
+/* Карточка редактирования */
+.edit-room-card {
+    max-width: 600px;
+}
+
+/* Текущее изображение */
+.current-image-container {
+    margin-bottom: 1rem;
+    padding: 0.8rem;
+    background: #0a0806;
+    border: 1px solid #3a2c22;
+}
+
+.current-image-wrapper {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+.current-room-image {
+    width: 100%;
+    max-height: 150px;
+    object-fit: cover;
+    border: 2px solid #5c3a28;
+    filter: grayscale(20%);
+}
+
+.image-label {
+    position: absolute;
+    bottom: 0.5rem;
+    right: 0.5rem;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 0.2rem 0.6rem;
+    font-size: 0.65rem;
+    color: #c9a06a;
+    font-family: monospace;
+    letter-spacing: 1px;
+}
+
+/* Кнопка сохранения изменений (желтая тема) */
+.btn-warning-roulette {
+    background: #8a6a2a;
+    border: 1px solid #c9a06a;
+    color: #f2e1c0;
+    padding: 0.7rem 1.5rem;
+    font-size: 0.9rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-family: monospace;
+    cursor: pointer;
+    transition: 0.2s;
+    width: 100%;
+}
+
+.btn-warning-roulette:hover {
+    background: #a6823a;
+    border-color: #e0b87a;
+    box-shadow: 0 0 8px #c9a06a;
+    letter-spacing: 3px;
+}
+
+/* Адаптация для мобильных */
+@media (max-width: 680px) {
+    .edit-room-card {
+        max-width: 95%;
+    }
+
+    .current-room-image {
+        max-height: 120px;
+    }
+
+    .image-label {
+        font-size: 0.55rem;
+    }
+}
+
+/* Анимация для предупреждения */
+@keyframes warningPulse {
+    0%, 100% {
+        box-shadow: 0 0 0px rgba(201, 160, 106, 0);
+    }
+    50% {
+        box-shadow: 0 0 10px rgba(201, 160, 106, 0.3);
+    }
+}
+
+.edit-room-card {
+    animation: warningPulse 2s ease-in-out infinite;
+}
+
+/* ============================================
+   СТРАНИЦА УДАЛЕНИЯ КОМНАТЫ
+============================================ */
+
+/* Карточка удаления комнаты */
+.room-delete-card {
+    max-width: 550px;
+    border-color: #8a3a2a;
+    animation: deleteGlow 2s ease-in-out infinite;
+}
+
+@keyframes deleteGlow {
+    0%, 100% {
+        box-shadow: 12px 12px 0 rgba(0, 0, 0, 0.5);
+        border-color: #8a3a2a;
+    }
+    50% {
+        box-shadow: 12px 12px 0 rgba(0, 0, 0, 0.5), 0 0 15px rgba(196, 81, 44, 0.3);
+        border-color: #c4512c;
+    }
+}
+
+/* Изображение комнаты в предупреждении */
+.room-image-warning {
+    margin: 1rem 0;
+    padding: 0.8rem;
+    background: #0a0503;
+    border: 1px solid #c4512c;
+    text-align: center;
+}
+
+.warning-room-image {
+    max-width: 100%;
+    max-height: 120px;
+    object-fit: cover;
+    border: 2px solid #5c3a28;
+    filter: grayscale(30%) sepia(20%);
+}
+
+.image-caption {
+    margin-top: 0.5rem;
+    font-size: 0.7rem;
+    color: #e6a07a;
+    font-family: monospace;
+    letter-spacing: 1px;
+}
+
+/* Специфичные стили для кнопки удаления комнаты */
+.room-delete-card .confirm-delete {
+    background: #2a1510;
+    border: 1.5px solid #c4512c;
+    color: #e6a07a;
+    padding: 0.8rem;
+    font-size: 0.85rem;
+}
+
+.room-delete-card .confirm-delete:hover {
+    background: #4a2518;
+    border-color: #e69055;
+    color: #fff0da;
+    box-shadow: 0 0 12px #c4512c;
+    letter-spacing: 3px;
+}
+
+/* Анимация для текста комнаты */
+.warning-message strong {
+    color: #e6a07a;
+    text-transform: uppercase;
+    display: inline-block;
+    animation: namePulse 1s ease-in-out infinite;
+}
+
+@keyframes namePulse {
+    0%, 100% {
+        text-shadow: 0 0 0px #c4512c;
+    }
+    50% {
+        text-shadow: 0 0 5px #c4512c;
+    }
+}
+
+/* Адаптация для мобильных */
+@media (max-width: 680px) {
+    .room-delete-card {
+        max-width: 95%;
+    }
+
+    .warning-room-image {
+        max-height: 100px;
+    }
+
+    .warning-message p {
+        font-size: 0.85rem;
+    }
+
+    .warning-list span {
+        font-size: 0.7rem;
+    }
+}

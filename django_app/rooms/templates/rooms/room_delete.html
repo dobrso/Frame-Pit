@@ -1,48 +1,52 @@
 {% extends 'base.html' %}
 
 {% block title %}
-    Удалить комнату {{ room.name }}
+    Удалить комнату {{ room.name }} — Frame Pit
 {% endblock %}
 
 {% block content %}
-<div class="container mt-4">
-    <div class="row">
-        <div class="col-md-6 mx-auto">
-            <div class="card shadow-sm">
-                <div class="card-header bg-white text-center">
-                        <h4 class="mb-0">Удалить комнату</h4>
+<div class="profile-wrapper">
+    <div class="profile-card delete-card room-delete-card">
+        <div class="profile-header delete-header">
+            <h3>УДАЛЕНИЕ КОМНАТЫ</h3>
+        </div>
+
+        <div class="profile-body delete-body">
+            <div class="delete-warning">
+                <div class="warning-skull">💀</div>
+                <h4>ВЫ УВЕРЕНЫ?</h4>
+
+                <div class="warning-message">
+                    <p>
+                        Вы собираетесь удалить комнату <strong>"{{ room.name }}"</strong>.<br>
+                        Это действие <strong>НЕЛЬЗЯ БУДЕТ ОТМЕНИТЬ</strong>.
+                    </p>
+
+                    {% if room.image %}
+                        <div class="room-image-warning">
+                            <img src="{{ room.image.url }}" alt="{{ room.name }}" class="warning-room-image">
+                            <div class="image-caption">{{ room.name }}</div>
+                        </div>
+                    {% endif %}
+
+                    <div class="warning-list">
+                        <span>❌ Все сообщения в чате будут потеряны</span>
+                        <span>❌ Участники будут исключены</span>
+                        <span>❌ Восстановление невозможно</span>
+                    </div>
                 </div>
 
-                <div class="card-body">
-                    <div class="text-center mb-4">
-                        <div class="mb-3">
-                            <i class="bi bi-exclamation-triangle" style="font-size: 48px; color: #dc3545;"></i>
-                        </div>
-                        <h5 class="text-danger">Вы уверены, что хотите удалить эту комнату?</h5>
-                        <p class="text-muted mt-2">Это действие нельзя отменить.</p>
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="delete-actions">
+                        <a href="{% url 'rooms:room_detail' room.id %}" class="btn-outline-roulette cancel-delete">
+                            ОТМЕНА
+                        </a>
+                        <button type="submit" class="btn-danger-roulette confirm-delete">
+                            УДАЛИТЬ
+                        </button>
                     </div>
-
-                    <div class="alert alert-warning">
-                        <strong>{{ room.name }}</strong>
-                        {% if room.image %}
-                            <div class="mt-2">
-                                <img src="{{ room.image.url }}" alt="{{ room.name }}" class="img-thumbnail" style="max-height: 100px;">
-                            </div>
-                        {% endif %}
-                    </div>
-
-                    <form method="post">
-                        {% csrf_token %}
-                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                            <a href="{% url 'rooms:room_detail' room.id %}" class="btn btn-secondary me-md-2">
-                                Отмена
-                            </a>
-                            <button type="submit" class="btn btn-danger">
-                                <i class="bi bi-trash"></i> Удалить
-                            </button>
-                        </div>
-                    </form>
-                </div>
+                </form>
             </div>
         </div>
     </div>
